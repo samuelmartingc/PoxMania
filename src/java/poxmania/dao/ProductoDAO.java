@@ -30,7 +30,7 @@ public class ProductoDAO {
             factory.close();
         }
     }
-   /*
+   
      public List<Producto> getProductosNombre(String nombre) {
         return getProductosQuery("l.titulo = \"" + nombre + "\"");
     }
@@ -39,21 +39,21 @@ public class ProductoDAO {
         return getProductosQuery("l.precio = " + precio);
     }
 
-    public List<Libro> getTodosLibros() {
-        return getLibrosQuery(null);
+    public List<Producto> getTodosProductos() {
+        return getProductosQuery(null);
     }
 
-    private List<Libro> getLibrosQuery(String where) {
+    private List<Producto> getProductosQuery(String where) {
 
-        String sql = "select l from Libro l";
+        String sql = "select l from Producto l";
         if (where != null) {
             sql += " where " + where;
         }
 
         Query query = manager.createQuery(sql);
-        return (List<Libro>) query.getResultList();
+        return (List<Producto>) query.getResultList();
     }
-
+/*
     public void insertarAutor(Autor autor) {
         EntityTransaction tx = manager.getTransaction();
         tx.begin();
@@ -61,21 +61,21 @@ public class ProductoDAO {
         tx.commit();
         //manager.flush();
     }
-
-    public void insertarLibro(Libro libro) {
+*/
+    public void insertarProducto(Producto producto) {
         EntityTransaction tx = manager.getTransaction();
         tx.begin();
-        manager.persist(libro);
+        manager.persist(producto);
         tx.commit();
         //manager.flush();
     }
 
-    public Autor getAutor(int codigoAutor) {
+    public Producto getProducto(int codigoProducto) {
         //String sql = "select a from Autor a where a.idautor = "+codigoAutor;
         //Query query = manager.createQuery(sql);
         //return (Autor) query.getResultList().get(0);
-        return manager.find(Autor.class, codigoAutor);
+        return manager.find(Producto.class, codigoProducto);
     }  
     
-    */
+    
 }//fin clase

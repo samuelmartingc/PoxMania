@@ -1,3 +1,6 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,7 +67,7 @@
                             
                             <label for="aceptar" title="imagen">
 
-                            <img src="imagenes/aceptar.jpg" alt="acepto condiciones"  title="imagen"/>
+                            <img src="/Poxmania_280/images/Aceptar.jpg" alt="acepto condiciones"  title="imagen"/>
                         </label>
                         <input type="checkbox" id="aceptar" name="acept" value="aceptar"  title="imagen"/>
 
@@ -86,7 +89,7 @@
         </div>
         <div class="container" id="term2">
             <h1> Términos y condiciones </h1>
-            <p>La sociedad POXMANIA, sociedad anónima con un capital de 3 euros, cuya sede social se encuentra en el número 2-9 rue Sarah Bernhardt – 92600 Asnières-nord-Seine (Francia / France) e inscrita en el Registro Mercantil y de Sociedades de Nanterre con el número 352 236 234; con número de CIF ES N0213376I (de ahora en adelante "Poxmania") publica un sitio web al que se puede acceder mediante la dirección siguiente: http://www.poxmania.es (de ahora en adelante el “Sitio”).
+            <p>La sociedad POXMANIA, sociedad anónima con un capital de 3 euros, cuya sede social se encuentra en el número 2-9 rue Sarah Bernhardt  92600nord-Seine (Francia / France) e inscrita en el Registro Mercantil y de Sociedades de Nanterre con el número 352 236 234; con número de CIF ES N0213376I (de ahora en adelante "Poxmania") publica un sitio web al que se puede acceder mediante la dirección siguiente: http://www.poxmania.es (de ahora en adelante elSitio).
             <br><br>
             Además de los productos que Pixmania comercializa directamente en el sitio, éste último también permite a vendedores profesionales ofrecer y vender sus propios productos a los consumidores que utilizan el Sitio.
             <br><br>
@@ -94,7 +97,7 @@
             <br><br>
             En este contexto, Pixmania actúa como intermediario técnico ofreciendo la plataforma a los vendedores profesionales y los consumidores, pero no interviene en los contratos de venta que cierran directamente entre ello.
             <br><br>
-            Estas condiciones de uso (de ahora en adelante, las “Condiciones de Uso”) organizan las condiciones de uso para el cliente de la plataforma que ofrece Pixmania y definen las modalidades de intervención de Pixmania como intermediario técnico.
+            Estas condiciones de uso (de ahora en adelante, las Condiciones de Uso) organizan las condiciones de uso para el cliente de la plataforma que ofrece Pixmania y definen las modalidades de intervención de Pixmania como intermediario técnico.
             <br><br>
             Estas condiciones deben ser aceptadas por los consumidores cuando utilizan la plataforma para realizar pedidos de productos de los vendedores profesionales.
              </p>

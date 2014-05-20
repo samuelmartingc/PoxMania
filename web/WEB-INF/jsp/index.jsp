@@ -1,3 +1,6 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +18,7 @@
         <link href="/Poxmania_280/css/signin.css" rel="stylesheet">
         <script src="/Poxmania_280/js/jquery.js" type="text/javascript"></script> 
         <script src="/Poxmania_280/js/indexSignIn.js" type="text/javascript"></script> 
-        <!-- <c:url value="/css/common.css" /> -->
+        
     </head>
     <body>
         
@@ -29,15 +32,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Categorías</a>
+          <a class="navbar-brand" href="#">CategorÃ­as</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Todas</a></li>
-            <li><a href="#about">Cámaras</a></li>
+            <li><a href="#about">CÃ¡maras</a></li>
             <li><a href="#contact">Consolas</a></li>
-            <li><a href="#contact">Electrodomésticos</a></li>
-            <li><a href="#contact">Móviles</a></li>
+            <li><a href="#contact">ElectrodomÃ©sticos</a></li>
+            <li><a href="#contact">MÃ³viles</a></li>
             <li><a href="#contact">Tabletas</a></li>
             <li><a href="#contact">Televisores</a></li>
   
@@ -65,5 +68,11 @@
     </div> <!-- /container -->
         
         <h1>Hello World!</h1>
+        <h2>${message}</h2>
+        
+        <c:forEach var="producto" items="${listaProductos}" >
+            ${producto.nombreproducto}
+            <br> - <br>
+        </c:forEach>
     </body>
 </html>

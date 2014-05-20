@@ -9,7 +9,7 @@
                            http://www.springframework.org/schema/mvc
                            http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <context:component-scan base-package="spring" />
+    <context:component-scan base-package="poxmania" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />

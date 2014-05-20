@@ -7,12 +7,12 @@
 package poxmania.model;
 
 import java.io.Serializable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -31,7 +31,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
     @NamedQuery(name = "Producto.findByIdproducto", query = "SELECT p FROM Producto p WHERE p.idproducto = :idproducto"),
     @NamedQuery(name = "Producto.findByNombreproducto", query = "SELECT p FROM Producto p WHERE p.nombreproducto = :nombreproducto"),
-    @NamedQuery(name = "Producto.findByCategoria", query = "SELECT p FROM Producto p WHERE p.categoria = :categoria"),
     @NamedQuery(name = "Producto.findByDescripcion", query = "SELECT p FROM Producto p WHERE p.descripcion = :descripcion"),
     @NamedQuery(name = "Producto.findByPrecio", query = "SELECT p FROM Producto p WHERE p.precio = :precio"),
     @NamedQuery(name = "Producto.findByImagen", query = "SELECT p FROM Producto p WHERE p.imagen = :imagen"),
@@ -42,14 +41,10 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDPRODUCTO")
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer idproducto;
     @Size(max = 30)
     @Column(name = "NOMBREPRODUCTO")
     private String nombreproducto;
-    @Size(max = 30)
-    @Column(name = "CATEGORIA")
-    private String categoria;
     @Size(max = 1000)
     @Column(name = "DESCRIPCION")
     private String descripcion;
@@ -64,13 +59,19 @@ public class Producto implements Serializable {
     @NotNull
     @Column(name = "STOCK")
     private int stock;
+    @JoinColumn(name = "CATEGORIA", referencedColumnName = "IDCATEGORIA")
+    @ManyToOne
+    private Categoria categoria;
 
     public Producto() {
     }
 
+    public Producto(Integer idproducto) {
+        this.idproducto = idproducto;
+    }
 
-
-    public Producto(int precio, int stock) {
+    public Producto(Integer idproducto, int precio, int stock) {
+        this.idproducto = idproducto;
         this.precio = precio;
         this.stock = stock;
     }
@@ -89,14 +90,6 @@ public class Producto implements Serializable {
 
     public void setNombreproducto(String nombreproducto) {
         this.nombreproducto = nombreproducto;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
     }
 
     public String getDescripcion() {
@@ -129,6 +122,14 @@ public class Producto implements Serializable {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Override

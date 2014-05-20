@@ -16,28 +16,40 @@
     </head>
     <body>
 
-<div class="container">
-    <h1> estoy en admin opciones </h1><br>
-    Los productos estarán categorizados y el administrador podrá insertar, editar y
-eliminar categorías.
-<br>
-El responsable de la aplicación web de POXmania podrá administrar su contenido.
-<br>
-El responsable podrá cambiar el estado de los pedidos: Nuevo, En preparación, Listo
-para enviar, De camino.
-<br>
-En la página de administración se podrán dar de alta y baja los artículos. También se
-podrá modificar su stock, precio, etc.<br>
-      <form class="form-signinLoR" role="form" action="/opcionesAdmin" method="get">
-        <h2 class="form-signin-heading">Acceso restringido a administradores del sistema</h2>
-        <input type="text" class="form-control" placeholder="Nombre de administrador" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-      </form>
+        <h1 id="overview" class="page-header">Opciones de administración</h1>
 
-    </div> <!-- /container -->
+    
 
-
+    
+    
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Categorias</div>
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item">Insertar categoria</li>
+    <li class="list-group-item">Editar categorias</li>
+    <li class="list-group-item">Eliminar categoria</li>
+  </ul>
+</div>
+    
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Cambiar el estado de los pedidos</div>
+  <br>
+  
+  <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Productos</div>
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item">Alta de nuevo producto</li>
+    <li class="list-group-item">Baja de producto</li>
+    <li class="list-group-item">Editar producto existente</li>
+  </ul>
+</div>
+    
+    
     </body>
 </html>
 

@@ -49,16 +49,19 @@
                     </div>
                     <div class="form-group">
                         <input type="text" name="nick" id="nick" class="form-control input-lg" placeholder="Nick" tabindex="5">
+                        <span class="glyphicon glyphicon-asterisk"></span>
                     </div>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="6">
+                                <span class="glyphicon glyphicon-asterisk"></span>
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirmar Password" tabindex="7">
+                                <span class="glyphicon glyphicon-asterisk"></span>
                             </div>
                         </div>
                     </div>

@@ -51,7 +51,7 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRECIO")
-    private int precio;
+    private double precio;
     @Size(max = 200)
     @Column(name = "IMAGEN")
     private String imagen;
@@ -70,7 +70,7 @@ public class Producto implements Serializable {
         this.idproducto = idproducto;
     }
 
-    public Producto(Integer idproducto, int precio, int stock) {
+    public Producto(Integer idproducto, double precio, int stock) {
         this.idproducto = idproducto;
         this.precio = precio;
         this.stock = stock;
@@ -100,11 +100,11 @@ public class Producto implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 

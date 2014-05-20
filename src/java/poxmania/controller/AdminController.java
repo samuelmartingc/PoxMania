@@ -18,5 +18,6 @@ public class AdminController {
             // comprobar contraseña con un dao
 	return "adminOpciones";
 	}
-	
+        
+
 }

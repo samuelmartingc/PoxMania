@@ -27,15 +27,15 @@
   <div class="panel-heading">Categorias</div>
   <!-- List group -->
   <ul class="list-group">
-    <li class="list-group-item">Insertar categoria</li>
-    <li class="list-group-item">Editar categorias</li>
-    <li class="list-group-item">Eliminar categoria</li>
+      <li class="list-group-item" ><a href=<c:url value="/nuevaCategoria"/> >Insertar categoria </a> </li>
+      <li class="list-group-item"><a href=<c:url value="/editarCategoria"/> >Editar categorias</a></li>
+      <li class="list-group-item"><a href=<c:url value="/eliminarCategoria"/> >Eliminar categoria</a></li>
   </ul>
 </div>
     
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">Cambiar el estado de los pedidos</div>
+  <div class="panel-heading"><a href=<c:url value="/editarPedidos"/> >Cambiar el estado de los pedidos</a></div>
   <br>
   
   <div class="panel panel-default">
@@ -43,9 +43,9 @@
   <div class="panel-heading">Productos</div>
   <!-- List group -->
   <ul class="list-group">
-    <li class="list-group-item">Alta de nuevo producto</li>
-    <li class="list-group-item">Baja de producto</li>
-    <li class="list-group-item">Editar producto existente</li>
+      <li class="list-group-item"><a href=<c:url value="/altaProducto"/> >Alta de nuevo producto</a></li>
+      <li class="list-group-item"><a href=<c:url value="/bajaProducto"/> >Baja de producto</a></li>
+      <li class="list-group-item"><a href=<c:url value="/editarProducto"/> >Editar producto existente</a></li>
   </ul>
 </div>
     

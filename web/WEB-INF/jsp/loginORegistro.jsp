@@ -15,8 +15,8 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <!-- para el login -->
-        <script src="/Poxmania_280/js/jquery.js" type="text/javascript"></script> 
-        <link href="/Poxmania_280/css/signin.css" rel="stylesheet">
+        <script src=<c:url value="/js/jquery.js" /> type="text/javascript"></script> 
+        <link href=<c:url value="/css/signin.css" /> rel="stylesheet">
     </head>
     <body>
         <div class="container">

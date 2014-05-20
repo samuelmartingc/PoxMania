@@ -9,10 +9,11 @@ import poxmania.dao.ProductoDAO;
 import poxmania.model.Producto;
 
 @Controller
-@RequestMapping("/index")
+//@RequestMapping("/index")
 public class HelloController1 {
 
-	@RequestMapping(method = RequestMethod.GET)
+	//@RequestMapping(method = RequestMethod.GET)
+        @RequestMapping(value="/index", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
         System.out.println("HOLA!!!");
         
@@ -24,6 +25,11 @@ public class HelloController1 {
         model.addAttribute("message", "Spring 3 MVC Hello World");
 	return "index";
 
+	}
+        
+        @RequestMapping(value="/registro", method = RequestMethod.GET)
+	public String registro(ModelMap model) {
+	return "registro";
 	}
 	
 }

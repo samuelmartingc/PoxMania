@@ -15,9 +15,9 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         
-        <script src="/Poxmania_280/js/jquery.js" type="text/javascript"></script> 
-        <script src="/Poxmania_280/js/registroTogle.js" type="text/javascript"></script> 
-        <link href="/Poxmania_280/css/registro.css" rel="stylesheet">
+        <script src=<c:url value="/js/jquery.js" /> type="text/javascript"></script> 
+        <script src=<c:url value="/js/registroTogle.js" /> type="text/javascript"></script> 
+        <link href=<c:url value="/css/registro.css" /> rel="stylesheet">
     </head>
     <body>
 

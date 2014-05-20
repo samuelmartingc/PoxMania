@@ -15,9 +15,9 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <!-- para el login -->
-        <link href="/Poxmania_280/css/signin.css" rel="stylesheet">
-        <script src="/Poxmania_280/js/jquery.js" type="text/javascript"></script> 
-        <script src="/Poxmania_280/js/indexSignIn.js" type="text/javascript"></script> 
+        <link href=<c:url value="/css/signin.css" /> rel="stylesheet">
+        <script src=<c:url value="/js/jquery.js" /> type="text/javascript"></script> 
+        <script src=<c:url value="/js/indexSignIn.js" /> type="text/javascript"></script> 
         
     </head>
     <body>
@@ -47,7 +47,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li ><a id="loginLi" href="#">Login</a></li>
-            <li><a href="./">Registrarse</a></li>
+            <li><a href=<c:url value="/registro" />>Registrarse</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

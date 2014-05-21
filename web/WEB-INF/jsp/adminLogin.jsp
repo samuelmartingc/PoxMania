@@ -21,8 +21,8 @@
 
       <form action=<c:url value="/opcionesAdmin" /> method="get">
         <h2 class="form-signin-heading">Acceso restringido a administradores del sistema</h2>
-        <input type="text" class="form-control" placeholder="Nombre de administrador" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="text" class="form-control" placeholder="Nombre de administrador" name="nombre" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" name="pass" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
       </form>
 

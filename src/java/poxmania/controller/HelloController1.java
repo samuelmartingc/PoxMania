@@ -23,7 +23,7 @@ public class HelloController1 {
         
         @Autowired
         CategoriaDAO daoCat;
-
+ 
 	//@RequestMapping(method = RequestMethod.GET)
         @RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(ModelMap model) {

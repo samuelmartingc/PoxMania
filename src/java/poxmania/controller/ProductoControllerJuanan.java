@@ -44,6 +44,14 @@ public class ProductoControllerJuanan  {
         return "index";
     }
     
+    @RequestMapping("/pc2")
+    public String findByCategoria2(@RequestParam(value="categoria", required=false, defaultValue="Camaras") String categoria, Model model) {
+         
+        List <Producto> lista = producto.findByCategoria(categoria);
+        model.addAttribute("listaProductos",lista);
+        return "index";
+    }
+    
     @RequestMapping("/pa")
     public String findAll (Model model) {
          

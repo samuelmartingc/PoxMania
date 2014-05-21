@@ -84,7 +84,7 @@
                         <div class="caption">
                             <h3>${producto.nombreproducto}</h3>
                             <p>${producto.descripcion}</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Añadir al carro</a> <a href=<c:url value="/detallesProducto" /> class="btn btn-default" role="button">Ver detalles</a></p>
+                            <p><a href=<c:url value="/meterEnCarro" /> class="btn btn-primary" role="button">Añadir al carro</a> <a href=<c:url value="/detallesProducto" /> class="btn btn-default" role="button">Ver detalles</a></p>
                         </div>
                     </div>
                 </div>

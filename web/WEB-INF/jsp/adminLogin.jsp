@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
+    
     <head>
         <title>Admin Login</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

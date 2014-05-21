@@ -10,6 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,15 +24,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author S
+ * @autores: Samuel Martin y Juan Antonio Echeverrias
  */
 @Entity
 @Table(name = "PRODUCTOS")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Producto.findByCategoria", query = "SELECT p FROM Producto p LEFT JOIN FETCH p.categoria WHERE p.categoria.nombrecategoria = :categoria"),
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
     @NamedQuery(name = "Producto.findByIdproducto", query = "SELECT p FROM Producto p WHERE p.idproducto = :idproducto"),
-    @NamedQuery(name = "Producto.findByNombreproducto", query = "SELECT p FROM Producto p WHERE p.nombreproducto LIKE '%:nombreproducto%'"),
+    @NamedQuery(name = "Producto.findByNombreproducto", query = "SELECT p FROM Producto p WHERE p.nombreproducto LIKE CONCAT(:nombreproducto, '%')"),
     @NamedQuery(name = "Producto.findByDescripcion", query = "SELECT p FROM Producto p WHERE p.descripcion = :descripcion"),
     @NamedQuery(name = "Producto.findByPrecio", query = "SELECT p FROM Producto p WHERE p.precio = :precio"),
     @NamedQuery(name = "Producto.findByImagen", query = "SELECT p FROM Producto p WHERE p.imagen = :imagen"),
@@ -41,6 +44,7 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDPRODUCTO")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idproducto;
     @Size(max = 30)
     @Column(name = "NOMBREPRODUCTO")
@@ -66,12 +70,8 @@ public class Producto implements Serializable {
     public Producto() {
     }
 
-    public Producto(Integer idproducto) {
-        this.idproducto = idproducto;
-    }
 
-    public Producto(Integer idproducto, double precio, int stock) {
-        this.idproducto = idproducto;
+    public Producto(double precio, int stock) {
         this.precio = precio;
         this.stock = stock;
     }

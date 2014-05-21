@@ -70,9 +70,33 @@
         <h1>Hello World!</h1>
         <h2>${message}</h2>
         
-        <c:forEach var="producto" items="${listaProductos}" >
-            ${producto.nombreproducto}
-            <br> - <br>
-        </c:forEach>
+        <div class="listaproductos">
+            <div class="row">
+                
+            <c:forEach var="producto" items="${listaProductos}" >
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img  alt="300x200" src=<c:url value="${producto.imagen}"/> style="width: 300px; height: 200px;">
+                        <div class="caption">
+                            <h3>${producto.nombreproducto}</h3>
+                            <p>${producto.descripcion}</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Añadir al carro</a> <a href="#" class="btn btn-default" role="button">Ver detalles</a></p>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+            </div>
+        </div>
+        
+        
+
+
+
+        
+        
+        
+        
+        
+        
     </body>
 </html>

@@ -3,6 +3,7 @@ package poxmania.controller;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import poxmania.dao.CategoriaDAO;
 import poxmania.dao.ProductoDAO;
+import poxmania.model.Carro;
 import poxmania.model.Categoria;
 import poxmania.model.Producto;
 
@@ -23,15 +25,15 @@ public class HelloController1 {
         
         @Autowired
         CategoriaDAO daoCat;
- 
+ /*
 	//@RequestMapping(method = RequestMethod.GET)
         @RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(ModelMap model) {
-       /* 
+       
         ProductoDAO dao = new ProductoDAO();
         List <Producto> listaProductos = null;
         listaProductos = dao.getTodosProductos();
-        */
+        
         List <Producto> listaProductos = null;
         listaProductos = dao.findAll();
         
@@ -44,6 +46,50 @@ public class HelloController1 {
 	return "index";
 
 	}
+        */
+        
+        @RequestMapping(value="/index", method = RequestMethod.GET)
+	public String index(ModelMap model,HttpSession session) {
+        
+        List <Producto> listaProductos = null;
+        listaProductos = dao.findAll();
+        /*
+        if (session.isNew()){ //si la sesión es nueva, creamos una variable carro a null y la guardamos en la sesión
+             Carro miCarro = null;
+             session.setAttribute("Carro",miCarro);
+             
+             listaProductos = dao.findAll();
+             session.setAttribute("listaproductos", listaProductos);
+        }    
+        
+        if (session.getAttribute("Carro")==null){
+            //construimos el carro
+             Carro miCarro = new Carro();
+             session.setAttribute("Carro",miCarro);
+             //creamos una variable que se guardará en la sesión, donde se almacenarán los últimos productos
+             //que el usuario ha buscado
+              
+             
+           }
+    
+        listaProductos=(List<Producto>) session.getAttribute("listaproductos");
+       */     
+            
+        
+        
+        
+        List <Categoria> listaCategorias = null;
+        listaCategorias = daoCat.findAll();
+        
+        model.addAttribute("listaCategorias", listaCategorias);
+        model.addAttribute("listaProductos", listaProductos);
+        model.addAttribute("message", "Spring 3 MVC Hello World");
+	return "index";
+
+	}
+        
+        
+        
         
         @RequestMapping(value="/indexEspecifico", method = RequestMethod.GET)
 	public String indexEspecifico(@RequestParam (value = "cat", required = false, defaultValue= "1")String categ, ModelMap model) {

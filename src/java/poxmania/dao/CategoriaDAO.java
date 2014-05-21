@@ -11,9 +11,11 @@ import org.springframework.stereotype.Component;
 import poxmania.model.Categoria;
 import poxmania.model.Producto;
 @Component
-public class CategoriaDAO extends GeneralDAO {
+public class CategoriaDAO extends GeneralDAO<Categoria,Integer> {
 
-    public CategoriaDAO(){};
+    public CategoriaDAO(){
+        super();
+    }
    
     
 }//fin clase

@@ -41,7 +41,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li>
                 
-                <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Ver Carro</a>
+                <a class="navbar-brand" href=<c:url value="/verCarro" /> ><span class="glyphicon glyphicon-shopping-cart"></span>Ver Carro</a>
             </li>
           </ul>
                  

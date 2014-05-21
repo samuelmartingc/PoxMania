@@ -1,0 +1,17 @@
+
+.main{
+ clear:both;   
+}
+
+.izquierda {
+    float: left;
+    width: 35%;
+    
+}
+.derecha {
+    margin-top: -40px;
+    padding-left: 5em;
+    float: right;
+    width:65%;
+
+}

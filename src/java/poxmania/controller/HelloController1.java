@@ -1,6 +1,7 @@
 package poxmania.controller;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,15 +12,25 @@ import poxmania.model.Producto;
 @Controller
 //@RequestMapping("/index")
 public class HelloController1 {
+    
+        @Autowired
+        ProductoDAO dao;
 
 	//@RequestMapping(method = RequestMethod.GET)
         @RequestMapping(value="/index", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
         System.out.println("HOLA!!!");
-        
+       /* 
         ProductoDAO dao = new ProductoDAO();
         List <Producto> listaProductos = null;
         listaProductos = dao.getTodosProductos();
+        */
+        
+         //ProductoDAO dao = new ProductoDAO();
+        
+        List <Producto> listaProductos = null;
+        listaProductos = dao.getTodosProductos();
+        
         
         model.addAttribute("listaProductos", listaProductos);
         model.addAttribute("message", "Spring 3 MVC Hello World");
@@ -30,6 +41,11 @@ public class HelloController1 {
         @RequestMapping(value="/registro", method = RequestMethod.GET)
 	public String registro(ModelMap model) {
 	return "registro";
+	}
+        
+        @RequestMapping(value="/detallesProducto", method = RequestMethod.GET)
+	public String detallesProducto(ModelMap model) {
+	return "detallesProducto";
 	}
 	
 }

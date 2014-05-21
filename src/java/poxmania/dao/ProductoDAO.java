@@ -8,8 +8,9 @@ package poxmania.dao;
 
 import java.util.List;
 import javax.persistence.*;
+import org.springframework.stereotype.Component;
 import poxmania.model.Producto;
-
+@Component
 public class ProductoDAO {
 
     private EntityManager manager;

@@ -36,14 +36,18 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Todas</a></li>
+            <li ><a href=<c:url value="/index"/> >Todas</a></li>
+            <c:forEach var="categoria" items="${listaCategorias}" >
+                <li><a href=<c:url value="/indexEspecifico?cat=${categoria.idcategoria}" /> > ${categoria.nombrecategoria}</a></li>
+            </c:forEach>
+                <!-- 
             <li><a href="#about">Cámaras</a></li>
             <li><a href="#contact">Consolas</a></li>
             <li><a href="#contact">Electrodomésticos</a></li>
             <li><a href="#contact">Móviles</a></li>
             <li><a href="#contact">Tabletas</a></li>
             <li><a href="#contact">Televisores</a></li>
-  
+  -->
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li ><a id="loginLi" href="#">Login</a></li>
@@ -54,7 +58,7 @@
     </div>
 
 <div class="container" id="logi">
-
+       
       <form class="form-signin" role="form">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" class="form-control" placeholder="Email address" required autofocus>

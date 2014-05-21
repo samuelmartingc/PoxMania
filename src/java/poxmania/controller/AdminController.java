@@ -19,7 +19,7 @@ public class AdminController {
     
         @RequestMapping(value="/admin", method = RequestMethod.GET)
 	public String registro(ModelMap model) {
-	return "adminLogin";
+            return "adminLogin";
 	}
         
         @RequestMapping(value="/opcionesAdmin", method = RequestMethod.GET)
@@ -36,6 +36,13 @@ public class AdminController {
             
 	
 	}
+        
+        @RequestMapping(value="/opcionesAdminOK", method = RequestMethod.GET)
+	public String opcionesAdminOK(ModelMap model) {
+            return "adminOpciones";
+	}
+        
+        
         
 
 }

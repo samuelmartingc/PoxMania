@@ -25,65 +25,28 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                <form role="form" id="form" method="get" action="#hola">
-                    <h2>Regístrese <small>Mejorará su experiencia en PoxMania</small></h2>
+                <form role="form" id="form" method="get" action=<c:url value="/insertarCategoria"/>>
+                    <h2>Alta de nueva categoria</h2>
                     <hr class="colorgraph">
                     <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
+                        
                             <div class="form-group">
-                                <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="Nombre" tabindex="1">
+                                <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="Nombre"  tabindex="1">
                             </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Apellidos" tabindex="2">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="direccion" id="direccion" class="form-control input-lg" placeholder="Direccion" tabindex="3">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="telefono" id="telefono" class="form-control input-lg" placeholder="Teléfono" tabindex="4">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="nick" id="nick" class="form-control input-lg" placeholder="Nick" tabindex="5">
-                        <span class="glyphicon glyphicon-asterisk"></span>
+                        
                     </div>
                     <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
+                        
                             <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="6">
-                                <span class="glyphicon glyphicon-asterisk"></span>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirmar Password" tabindex="7">
-                                <span class="glyphicon glyphicon-asterisk"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-3 col-sm-3 col-md-3">
+                                <textarea class="form-control" rows="5" name="nombreCategoria" tabindex="2"></textarea>
                             
-                            <label for="aceptar" title="imagen">
-
-                            <img src="/Poxmania_280/images/Aceptar.jpg" alt="acepto condiciones"  title="imagen"/>
-                        </label>
-                        <input type="checkbox" id="aceptar" name="acept" value="aceptar"  title="imagen"/>
-
-
-                        </div>
-                        <div class="col-xs-9 col-sm-9 col-md-9">
-                             Haciendo click en  <strong class="label label-primary">Aceptar</strong>, aceptas los  <a id="terminos" tabindex="11" href="#" >términos y condiciones</a> de este sitio.
                         </div>
                     </div>
                     
                     <hr class="colorgraph">
                     <div class="row">
-                        <div class="col-xs-6 col-md-6"><input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="9"></div>
-                        <div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg" tabindex="10" >Volver</a></div>
+                        <div class="col-xs-6 col-md-6"><input type="submit" value="Insertar" class="btn btn-primary btn-block btn-lg" tabindex="9"></div>
+                        <div class="col-xs-6 col-md-6"><a href=<c:url value="/opcionesAdminOK"/> class="btn btn-success btn-block btn-lg" tabindex="10" >Volver</a></div>
                     </div>
                 </form>
             </div>

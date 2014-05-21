@@ -36,7 +36,7 @@ public class HelloController1 {
         listaProductos = dao.findAll();
         
         List <Categoria> listaCategorias = null;
-        listaCategorias = daoCat.getTodasCategorias();
+        listaCategorias = daoCat.findAll();
         
         model.addAttribute("listaCategorias", listaCategorias);
         model.addAttribute("listaProductos", listaProductos);
@@ -51,7 +51,7 @@ public class HelloController1 {
         listaProductos = dao.findAll();
         
         List <Categoria> listaCategorias = null;
-        listaCategorias = daoCat.getTodasCategorias();
+        listaCategorias = daoCat.findAll();
         List <Producto> listAuxProd = new ArrayList<Producto>();
         for (Producto prod: listaProductos){
             if (prod.getCategoria().getIdcategoria() == Integer.parseInt(categ)){

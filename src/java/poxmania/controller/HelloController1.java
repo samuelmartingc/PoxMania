@@ -25,14 +25,13 @@ public class HelloController1 {
         
         @Autowired
         CategoriaDAO daoCat;
- /*
+ 
 	//@RequestMapping(method = RequestMethod.GET)
         @RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(ModelMap model) {
        
         ProductoDAO dao = new ProductoDAO();
-        List <Producto> listaProductos = null;
-        listaProductos = dao.getTodosProductos();
+
         
         List <Producto> listaProductos = null;
         listaProductos = dao.findAll();
@@ -46,47 +45,8 @@ public class HelloController1 {
 	return "index";
 
 	}
-        */
-        
-        @RequestMapping(value="/index", method = RequestMethod.GET)
-	public String index(ModelMap model,HttpSession session) {
-        
-        List <Producto> listaProductos = null;
-        listaProductos = dao.findAll();
-        /*
-        if (session.isNew()){ //si la sesión es nueva, creamos una variable carro a null y la guardamos en la sesión
-             Carro miCarro = null;
-             session.setAttribute("Carro",miCarro);
-             
-             listaProductos = dao.findAll();
-             session.setAttribute("listaproductos", listaProductos);
-        }    
-        
-        if (session.getAttribute("Carro")==null){
-            //construimos el carro
-             Carro miCarro = new Carro();
-             session.setAttribute("Carro",miCarro);
-             //creamos una variable que se guardará en la sesión, donde se almacenarán los últimos productos
-             //que el usuario ha buscado
-              
-             
-           }
-    
-        listaProductos=(List<Producto>) session.getAttribute("listaproductos");
-       */     
-            
         
         
-        
-        List <Categoria> listaCategorias = null;
-        listaCategorias = daoCat.findAll();
-        
-        model.addAttribute("listaCategorias", listaCategorias);
-        model.addAttribute("listaProductos", listaProductos);
-        model.addAttribute("message", "Spring 3 MVC Hello World");
-	return "index";
-
-	}
         
         
         

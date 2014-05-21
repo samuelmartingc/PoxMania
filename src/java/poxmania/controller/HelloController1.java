@@ -33,7 +33,7 @@ public class HelloController1 {
         listaProductos = dao.getTodosProductos();
         */
         List <Producto> listaProductos = null;
-        listaProductos = dao.getTodosProductos();
+        listaProductos = dao.findAll();
         
         List <Categoria> listaCategorias = null;
         listaCategorias = daoCat.getTodasCategorias();
@@ -48,7 +48,7 @@ public class HelloController1 {
         @RequestMapping(value="/indexEspecifico", method = RequestMethod.GET)
 	public String indexEspecifico(@RequestParam (value = "cat", required = false, defaultValue= "1")String categ, ModelMap model) {
         List <Producto> listaProductos = null;
-        listaProductos = dao.getTodosProductos();
+        listaProductos = dao.findAll();
         
         List <Categoria> listaCategorias = null;
         listaCategorias = daoCat.getTodasCategorias();
@@ -76,6 +76,8 @@ public class HelloController1 {
         
         @RequestMapping(value="/detallesProducto", method = RequestMethod.GET)
 	public String detallesProducto(ModelMap model) {
+            Producto producto = dao.get(1);
+            model.addAttribute("prod",producto);
 	return "detallesProducto";
 	}
 	

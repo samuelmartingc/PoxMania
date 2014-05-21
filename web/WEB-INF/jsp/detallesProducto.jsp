@@ -68,7 +68,7 @@
 
     </div> <!-- /container -->
         
-        <h2>${message}</h2>
+        <h2>${prod.nombreproducto}</h2>
         
         <div class="main">
             <h1 class="page-header">Camara cara</h1>

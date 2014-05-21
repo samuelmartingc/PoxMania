@@ -15,7 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import poxmania.dao.ProductoDAOImpl;
+import poxmania.dao.ProductoDAO;
 import poxmania.model.Producto;
 
 /**
@@ -26,7 +26,7 @@ import poxmania.model.Producto;
 public class ProductoControllerJuanan  {
     
     @Autowired
-    ProductoDAOImpl producto;
+    ProductoDAO producto;
     
     @RequestMapping("/pn")
     public String findByNombre(@RequestParam(value="nombre", required=false, defaultValue="Ca") String nombre, Model model) {

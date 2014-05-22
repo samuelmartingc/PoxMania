@@ -14,7 +14,7 @@ $(document).ready(
             alert("El nick debe rellenarse");  
             return false;  
         }  
-        if($("#password").val().length < 4) {  
+        if($("#password").val().length < 3) {  
             alert("La contraseña debe tener al menos 3 caracteres");  
             return false;  
         }  

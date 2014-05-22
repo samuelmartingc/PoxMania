@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import poxmania.dao.PedidoDAO;
 import poxmania.dao.ProductoDAO;
 import poxmania.dao.RelacionproductopedidoDAO;
@@ -54,4 +55,18 @@ public class PedidoController {
             model.addAttribute("listaPedidos", listaFinal);
             return "editarPedidos";
 	}
+        
+        
+        @RequestMapping(value="/editarPedidoConcreto", method = RequestMethod.GET)
+	public String editarPedidoConcreto(@RequestParam(value = "idpedido") int idpedido,
+                @RequestParam(value = "estado") String estado,
+                ModelMap model) {
+            Pedido ped = daoPed.get(idpedido);
+            ped.setEstado(estado);
+            daoPed.update(ped);
+            return "adminOpciones";
+	}
+        
+
+    
 }

@@ -6,25 +6,25 @@
 
 package poxmania.controller;
 
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import poxmania.dao.CategoriaDAO;
+import poxmania.dao.ProductoDAO;
+import poxmania.model.Categoria;
+import poxmania.model.Producto;
 
 /**
  *
  * @author S
  */
-public class ProductoController {
+public class IndexController {
     
-    @RequestMapping(value="/altaProducto", method = RequestMethod.GET)
-	public String altaProducto(ModelMap model) {
-            return "altaProducto";
-	}
-        
-        @RequestMapping(value="/insertarProducto", method = RequestMethod.GET)
-	public String insertarProducto(ModelMap model) {
-            return "opcionesAdminOK";
-	}
+
+ 
+
     
     
 }

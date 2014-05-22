@@ -29,10 +29,7 @@ public class HelloController1 {
 	//@RequestMapping(method = RequestMethod.GET)
         @RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(ModelMap model) {
-       
-        ProductoDAO dao = new ProductoDAO();
 
-        
         List <Producto> listaProductos = null;
         listaProductos = dao.findAll();
         

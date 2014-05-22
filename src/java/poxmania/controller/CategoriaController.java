@@ -1,5 +1,6 @@
 
 package poxmania.controller;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,6 +27,30 @@ public class CategoriaController {
             daoCat.saveOrUpdate(cat);
             return "adminOpciones";
 	}
+        
+        @RequestMapping(value="/editarCategoria", method = RequestMethod.GET)
+	public String editarCategoria(ModelMap model) {
+            List <Categoria> listaCategorias = null;
+            listaCategorias = daoCat.findAll();
+            model.addAttribute("listaCategorias", listaCategorias);
+            return "elegirCategoria";
+	}
+        
+        @RequestMapping(value="/editarCategoriaConcreta", method = RequestMethod.GET)
+	public String editarCategoriaConcretapublic (@RequestParam (value = "id", required = false, defaultValue= "1")String idCat, ModelMap model) {
+            Categoria categoria = daoCat.get(Integer.parseInt(idCat));
+            model.addAttribute("categoria", categoria);
+            return "editarCategoria";
+	}
     
     
+        @RequestMapping(value="/editarCategoriaFin", method = RequestMethod.GET)
+	public String editarCategoriaFin(@RequestParam(value = "nombreCategoria") String nombreCategoria, 
+                @RequestParam(value = "idcategoria") String idCategoria,
+                ModelMap model) {
+            Categoria categoria = daoCat.get(Integer.parseInt(idCategoria));
+            categoria.setNombrecategoria(nombreCategoria);
+            daoCat.saveOrUpdate(categoria);
+            return "adminOpciones";
+	}
 }

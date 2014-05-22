@@ -29,14 +29,14 @@
         <div class="listaproductos">
             <div class="row">
                 
-            <c:forEach var="producto" items="${listaProductos}" >
+            <c:forEach var="producto" items="${listaproductos}" >
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
                         <img  alt="300x200" src=<c:url value="${producto.imagen}"/> style="width: 300px; height: 200px;">
                         <div class="caption">
                             <h3>${producto.nombreproducto}</h3>
                             <p>${producto.descripcion}</p>
-                            <p><a href=<c:url value="/meterEnCarro" /> class="btn btn-primary" role="button">Añadir al carro</a> <a href=<c:url value="/detallesProducto" /> class="btn btn-default" role="button">Ver detalles</a></p>
+                            <p><a href=<c:url value="/meterEnCarro?id=${producto.idproducto}" /> class="btn btn-primary" role="button">Añadir al carro</a> <a href=<c:url value="/detallesProducto?id=${producto.idproducto}" /> class="btn btn-default" role="button">Ver detalles</a></p>
                         </div>
                     </div>
                 </div>

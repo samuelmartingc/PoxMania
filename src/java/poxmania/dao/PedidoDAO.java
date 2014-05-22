@@ -6,8 +6,16 @@
 
 package poxmania.dao;
 
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import poxmania.model.Pedido;
+import poxmania.model.PedidoConProductos;
+import poxmania.model.ProductoCarro;
 
 /**
  *
@@ -16,9 +24,11 @@ import poxmania.model.Pedido;
 
 @Component
 public class PedidoDAO extends GeneralDAO <Pedido, Integer>{
+
     
     public PedidoDAO (){
         super();
     }
+    
     
 }

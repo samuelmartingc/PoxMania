@@ -7,7 +7,9 @@
 package poxmania.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,14 +19,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @autores: Samuel Martin y Juan Antonio Echeverrias
+ * @author S
  */
 @Entity
 @Table(name = "PRODUCTOS")
@@ -66,17 +70,14 @@ public class Producto implements Serializable {
     @JoinColumn(name = "CATEGORIA", referencedColumnName = "IDCATEGORIA")
     @ManyToOne
     private Categoria categoria;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+    private List<Relacionproductopedido> relacionproductopedidoList;
 
     public Producto() {
     }
 
-
-    public Producto(double precio, int stock) {
-        this.precio = precio;
-        this.stock = stock;
-    }
     
-    //Producto prod = new Producto(nombre, descripcion, precio,imagen,stock,cat);
+
     public Producto(String nombre, String descripcion, double precio, String imagen, int stock, Categoria cat) {
         this.nombreproducto = nombre;
         this.descripcion = descripcion;
@@ -140,6 +141,15 @@ public class Producto implements Serializable {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    @XmlTransient
+    public List<Relacionproductopedido> getRelacionproductopedidoList() {
+        return relacionproductopedidoList;
+    }
+
+    public void setRelacionproductopedidoList(List<Relacionproductopedido> relacionproductopedidoList) {
+        this.relacionproductopedidoList = relacionproductopedidoList;
     }
 
     @Override

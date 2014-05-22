@@ -44,8 +44,8 @@
   <!-- List group -->
   <ul class="list-group">
       <li class="list-group-item"><a href=<c:url value="/altaProducto"/> >Alta de nuevo producto</a></li>
-      <li class="list-group-item"><a href=<c:url value="/bajaProducto"/> >Baja de producto</a></li>
       <li class="list-group-item"><a href=<c:url value="/editarProducto"/> >Editar producto existente</a></li>
+      <li class="list-group-item"><a href=<c:url value="/bajaProducto"/> >Baja de producto</a></li>
   </ul>
 </div>
     

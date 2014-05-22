@@ -35,33 +35,33 @@
                     </div>
                     <div class="row">
                             <div class="form-group">
-                                <select class="form-control" name="categoria" tabindex="1" required>
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select> 
+                                <select class="form-control" name="categoria" tabindex="2" required>
+                                    <c:forEach var="categoria" items="${listaCategorias}" >
+                                        <option>${categoria.idcategoria} -> ${categoria.nombrecategoria}</option>
+                                    </c:forEach>
+                                </select> 
                             </div>
                     </div>
                     <div class="row">
                             <div class="form-group">
-                                <textarea class="form-control" rows="5" name="descripcion" tabindex="1" required></textarea>
+                                <textarea class="form-control" rows="5" placeholder="Descripcion" name="descripcion" tabindex="3" required></textarea>
                             </div>
                     </div>
                     <div class="row">
                             <div class="form-group">
-                                <input type="text" class="form-control input-lg" placeholder="Precio" name="precio" tabindex="1" required>
+                                <input type="number"  step="any" min="0" class="form-control input-lg" placeholder="Precio" name="precio" tabindex="4" required>
+                                
+                            </div>
+                        
+                    </div>
+                    <div class="row">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-lg" placeholder="imagen" name="imagen" tabindex="5" required>
                             </div>
                     </div>
                     <div class="row">
                             <div class="form-group">
-                                <input type="text" class="form-control input-lg" placeholder="imagen" name="imagen" tabindex="1" required>
-                            </div>
-                    </div>
-                    <div class="row">
-                            <div class="form-group">
-                                <input type="text" class="form-control input-lg" placeholder="Stock" name="stock" tabindex="1" required>
+                                <input type="number" min="0" class="form-control input-lg" placeholder="Stock" name="stock" tabindex="6" required>
                             </div>
                     </div>
                     
@@ -69,7 +69,7 @@
                     
                     <hr class="colorgraph">
                     <div class="row">
-                        <div class="col-xs-6 col-md-6"><input type="submit" value="Insertar" class="btn btn-primary btn-block btn-lg" tabindex="9"></div>
+                        <div class="col-xs-6 col-md-6"><input type="submit" value="Insertar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
                         <div class="col-xs-6 col-md-6"><a href=<c:url value="/opcionesAdminOK"/> class="btn btn-success btn-block btn-lg" tabindex="10" >Volver</a></div>
                     </div>
                 </form>

@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -30,8 +32,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "USUARIOS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findByIdusuario", query = "SELECT u FROM Usuario u WHERE u.idusuario = :idusuario"),
     @NamedQuery(name = "Usuario.findByNick", query = "SELECT u FROM Usuario u WHERE u.nick = :nick"),
     @NamedQuery(name = "Usuario.findByPass", query = "SELECT u FROM Usuario u WHERE u.pass = :pass"),
     @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre"),
@@ -43,6 +43,7 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDUSUARIO")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idusuario;
     @Size(max = 50)
     @Column(name = "NICK")
@@ -63,6 +64,14 @@ public class Usuario implements Serializable {
     private List<Pedido> pedidoList;
 
     public Usuario() {
+    }
+    
+    public Usuario(String nick, String pass, String nombre, String direccion ,String telefono) {
+        this.nick = nick;
+        this.pass = pass;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
     }
 
     public Usuario(Integer idusuario) {

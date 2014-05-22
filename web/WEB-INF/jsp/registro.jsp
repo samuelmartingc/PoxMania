@@ -26,7 +26,7 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                <form role="form" id="form" method="get" action="#hola">
+                <form role="form" id="form" method="get" action=<c:url value="/registrarUsuario" />>
                     <h2>Regístrese <small>Mejorará su experiencia en PoxMania</small></h2>
                     <hr class="colorgraph">
                     <div class="row">
@@ -84,7 +84,7 @@
                     <hr class="colorgraph">
                     <div class="row">
                         <div class="col-xs-6 col-md-6"><input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="9"></div>
-                        <div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg" tabindex="10" >Volver</a></div>
+                        <div class="col-xs-6 col-md-6"><a href=<c:url value="/index" /> class="btn btn-success btn-block btn-lg" tabindex="10" >Volver</a></div>
                     </div>
                 </form>
             </div>

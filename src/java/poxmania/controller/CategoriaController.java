@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import poxmania.dao.CategoriaDAO;
+import poxmania.dao.ProductoDAO;
 import poxmania.model.Categoria;
+import poxmania.model.Producto;
 
 @Controller
 public class CategoriaController {
         @Autowired
         CategoriaDAO daoCat;
+        
+        @Autowired
+        ProductoDAO daoProd;
     
         @RequestMapping(value="/nuevaCategoria", method = RequestMethod.GET)
 	public String nuevaCategoria(ModelMap model) {
@@ -51,6 +56,28 @@ public class CategoriaController {
             Categoria categoria = daoCat.get(idCategoria);
             categoria.setNombrecategoria(nombreCategoria);
             daoCat.update(categoria);
+            return "adminOpciones";
+	}
+        
+        
+        @RequestMapping(value="/eliminarCategoria", method = RequestMethod.GET)
+	public String eliminarCategoria(ModelMap model) {
+            List <Categoria> listaCategorias = null;
+            listaCategorias = daoCat.findAll();
+            model.addAttribute("listaCategorias", listaCategorias);
+            return "eliminarCategoria";
+	}
+        
+        @RequestMapping(value="/borrarCategoriaConcreta", method = RequestMethod.GET)
+	public String borrarCategoriaConcreta(@RequestParam (value = "id", required = false, defaultValue= "1")int idCat, ModelMap model) {
+            List <Producto> listaProductos = null;
+            listaProductos = daoProd.findAll();
+            for(Producto producto:listaProductos){
+                if (producto.getCategoria().getIdcategoria() == idCat){
+                    daoProd.delete(producto.getIdproducto());
+                }
+            }
+            daoCat.delete(idCat);
             return "adminOpciones";
 	}
 }

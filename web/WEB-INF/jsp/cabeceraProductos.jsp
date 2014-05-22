@@ -35,10 +35,12 @@
           </ul>
             
           <ul class="nav navbar-nav navbar-right">
+              
             <li ><a id="loginLi" href="#">Login</a></li>
             <li><a href=<c:url value="/registro" />>Registrarse</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+              <li ><a id="user" href="#">${user}</a></li>
             <li>
                 
                 <a class="navbar-brand" href=<c:url value="/verCarro" /> ><span class="glyphicon glyphicon-shopping-cart"></span>Ver Carro</a>
@@ -52,10 +54,10 @@
 
 <div class="container" id="logi">
        
-      <form class="form-signin" role="form">
+      <form class="form-signin" role="form" action=<c:url value="/loginUsuario" />>
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="text" name="nick" class="form-control" placeholder="Nick" required autofocus>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>

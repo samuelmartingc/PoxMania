@@ -60,6 +60,7 @@ public class IndexController {
              session.setAttribute("carro",carro);
              listaProductos = dao.findAll();
              session.setAttribute("listaproductos", listaProductos);
+             session.setAttribute("user","");
              }    
         
        

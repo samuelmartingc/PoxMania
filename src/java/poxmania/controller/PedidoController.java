@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import poxmania.dao.PedidoDAO;
 import poxmania.dao.ProductoDAO;
 import poxmania.dao.RelacionproductopedidoDAO;
+import poxmania.model.Carro;
 import poxmania.model.Pedido;
 import poxmania.model.PedidoConProductos;
 import poxmania.model.Producto;
@@ -28,11 +29,7 @@ public class PedidoController {
     @Autowired
     ProductoDAO daoProd;
     
-        @RequestMapping(value="/hacerPedido", method = RequestMethod.GET)
-	public String hacerPedido(ModelMap model, HttpSession session) {
-            
-	return "index";
-	}
+        
         
         @RequestMapping(value="/editarPedidos", method = RequestMethod.GET)
 	public String editarPedidos(ModelMap model) {
@@ -68,5 +65,6 @@ public class PedidoController {
 	}
         
 
+        
     
 }

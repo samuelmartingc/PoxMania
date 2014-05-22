@@ -21,14 +21,14 @@
     <body>
         <div class="container">
 
-      <form class="form-signinLoR" role="form">
+      <form class="form-signinLoR" role="form" action=<c:url value="/loginUsuario" /> >
         <h2 class="form-signin-heading">Login</h2>
-        <input type="text" class="form-control" placeholder="Nick de usuario" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="text" name="nick" class="form-control" placeholder="Nick de usuario" required autofocus>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
       </form>
 <br><br>
-    <form class="form-signinLoR"  role="form">
+    <form class="form-signinLoR"  role="form" action=<c:url value="/registro" /> >
         <button class="btn btn-lg btn-primary btn-block" id="registro" type="submit">Registrarse</button>
       </form>
     </div> <!-- /container -->

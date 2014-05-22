@@ -41,13 +41,29 @@ public class UsuarioController {
             Usuario usuario = daousu.findByNick(nick);
             if (usuario==null){
                 daousu.save(new Usuario(nick,password,first_name+" "+last_name,direccion,telefono));
-                session.setAttribute("nick", nick);
+                session.setAttribute("user", nick);
                 vista="index";
             }
             else{
                     vista="registro";
             }
             return vista;
+	}
+        
+         @RequestMapping(value="/loginUsuario", method = RequestMethod.GET)
+	public String registrarUsuario(@RequestParam(value = "nick") String nick
+                ,@RequestParam(value = "password") String password
+                ,HttpSession session) {
+            
+             Usuario usuario = daousu.findByNick(nick);
+            if (usuario==null){
+                
+            }
+            else if (usuario.getPass().compareTo(password)==0){
+                    session.setAttribute("user", nick);
+                    session.setAttribute("userid", usuario.getIdusuario());
+            }
+            return "index";
 	}
     
      

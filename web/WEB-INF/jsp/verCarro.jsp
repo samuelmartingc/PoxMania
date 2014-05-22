@@ -2,20 +2,29 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Mostrar carro</title>
-    </head>
-    
 <html>
     <head>
+        <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Productos del carro</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <!-- para el login -->
+        <link href=<c:url value="/css/signin.css" /> rel="stylesheet">
+        <script src=<c:url value="/js/jquery.js" /> type="text/javascript"></script> 
+        <script src=<c:url value="/js/indexSignIn.js" /> type="text/javascript"></script> 
+        
     </head>
     <body>
+
         <c:import url="cabeceraProductos.jsp" charEncoding="utf-8"/>
         
-        <h1> Contenido del carro: ${nombre}</h1>
+        <h1> Contenido del carro: ${user}</h1>
         
          
         <!-- formulario de modificación de pedido -->
@@ -50,7 +59,7 @@
                  </table>  
         
             <div class="pedido">
-                <a href=<c:url value="/hacerPedido?carro=${carro}" /> class="btn btn-primary" role="button">Hacer pedido</a>
+                <a href=<c:url value="/hacerPedido" /> class="btn btn-primary" role="button">Hacer pedido</a>
                 <p>Importe Total: ${carro.precio} <span class="glyphicon glyphicon-euro"></span></p>
             </div>
                   

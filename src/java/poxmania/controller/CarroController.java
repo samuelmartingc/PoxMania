@@ -11,13 +11,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import poxmania.dao.ProductoDAO;
+import poxmania.dao.UsuarioDAO;
 import poxmania.model.Carro;
 import poxmania.model.Producto;
 import poxmania.model.ProductoCarro;
+import poxmania.model.Usuario;
 
 
 /**
@@ -30,6 +33,8 @@ public class CarroController {
     @Autowired
     ProductoDAO producto;
     
+    @Autowired
+    UsuarioDAO usuDAO;
     
     //Carro carro;
     
@@ -78,5 +83,41 @@ public class CarroController {
         model.addAttribute("carro", session.getAttribute("carro"));
         return "verCarro";
     }
+    
+    @RequestMapping(value="/hacerPedido", method = RequestMethod.GET)
+	public String hacerPedido(ModelMap model, HttpSession session) {
+            Carro carro = (Carro) session.getAttribute("carro");
+            String user = (String) session.getAttribute("user");
+            int userid= (int) session.getAttribute("userid");
+            Usuario usuario = usuDAO.get(userid);
+            if ( (carro!= null) && (!carro.getContenido().isEmpty()) ){ // si no esta vacio
+                if (user != ""){
+                    model.addAttribute("carro", session.getAttribute("carro"));
+                    model.addAttribute("usuario", usuario);
+                    return "hacerPedido";
+                }
+                else{
+                    return "loginORegistro";
+                }
+            }
+            else{ //carro vacio
+                return "index";
+            }
+            
+	}
+        
+        @RequestMapping(value="/pagoContraReembolso", method = RequestMethod.GET)
+	public String pagoContraReembolso(ModelMap model, HttpSession session) {
+            
+            return "pagoContraReembolso";
+	}
+        
+        // falta hacerlo
+        @RequestMapping(value="/terminarPedido", method = RequestMethod.GET)
+	public String terminarPedido(ModelMap model, HttpSession session) {
+            Carro carro = (Carro) session.getAttribute("carro");
+            return "index";
+	}
+        
     
 }

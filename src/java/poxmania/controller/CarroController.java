@@ -168,7 +168,7 @@ public class CarroController {
             
             for (ProductoCarro productoCarro:c.getContenido()){
                 Producto prod = productoCarro.getProd();
-                Relacionproductopedido rel = new Relacionproductopedido(p.getIdpedido(),prod.getIdproducto(),c.getPrecio());
+                Relacionproductopedido rel = new Relacionproductopedido(p.getIdpedido(),prod.getIdproducto(),productoCarro.getCantidad());
                 relDAO.save(rel);
             }
         }

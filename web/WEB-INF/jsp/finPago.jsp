@@ -4,13 +4,25 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <title>Registro</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        
+        <script src=<c:url value="/js/jquery.js" /> type="text/javascript"></script> 
+
     </head>
-    <body>
+    <body style="text-align: center">
         <h1>Finalizacion de su compra</h1> <br>
         <h2>En unos días le llegará su pedido, muchas gracias por su confianza</h2>
         <h3>El importe total es de ${total} € </h3>
-        <a href=<c:url value="/index"/> class="btn btn-success btn-block btn-lg" tabindex="10" >Volver al inicio</a>
+        <br>
+        <a href=<c:url value="/index"/> class="btn btn-success btn-block btn-lg" tabindex="10" style="max-width:20%; margin: auto">Volver al inicio</a>
     </body>
 </html>

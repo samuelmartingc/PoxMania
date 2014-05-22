@@ -61,6 +61,11 @@ public class Relacionproductopedido implements Serializable {
     public Relacionproductopedido(int idpedido, int idproducto) {
         this.relacionproductopedidoPK = new RelacionproductopedidoPK(idpedido, idproducto);
     }
+    
+    public Relacionproductopedido(int idpedido, int idproducto, int cantidad) {
+        this.relacionproductopedidoPK = new RelacionproductopedidoPK(idpedido, idproducto);
+        this.cantidad = cantidad;
+    }
 
     public RelacionproductopedidoPK getRelacionproductopedidoPK() {
         return relacionproductopedidoPK;

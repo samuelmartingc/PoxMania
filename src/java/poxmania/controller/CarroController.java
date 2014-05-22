@@ -15,11 +15,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import poxmania.dao.PedidoDAO;
 import poxmania.dao.ProductoDAO;
+import poxmania.dao.RelacionproductopedidoDAO;
 import poxmania.dao.UsuarioDAO;
 import poxmania.model.Carro;
+import poxmania.model.Pedido;
 import poxmania.model.Producto;
 import poxmania.model.ProductoCarro;
+import poxmania.model.Relacionproductopedido;
 import poxmania.model.Usuario;
 
 
@@ -35,6 +39,12 @@ public class CarroController {
     
     @Autowired
     UsuarioDAO usuDAO;
+    
+    @Autowired
+    PedidoDAO pedDAO;
+    
+    @Autowired
+    RelacionproductopedidoDAO relDAO;
     
     //Carro carro;
     
@@ -106,18 +116,62 @@ public class CarroController {
             
 	}
         
-        @RequestMapping(value="/pagoContraReembolso", method = RequestMethod.GET)
-	public String pagoContraReembolso(ModelMap model, HttpSession session) {
+        @RequestMapping(value="/pago", method = RequestMethod.GET)
+	public String pago(@RequestParam(value = "nombre") String nombre,
+                @RequestParam(value = "direccion") String direccion,
+                @RequestParam(value = "userid") int userid,
+                @RequestParam(value = "option") int tipoPago,
+                @RequestParam(value = "telefono") String telefono,
+                ModelMap model, HttpSession session) {
+            Carro carro = (Carro) session.getAttribute("carro");
+            Usuario usuario = usuDAO.get(userid);
+            usuario.setDireccion(direccion);
+            usuario.setNombre(nombre);
+            usuario.setTelefono(telefono);
+            usuDAO.update(usuario);
             
-            return "pagoContraReembolso";
+            model.addAttribute("usuario", usuario);
+            model.addAttribute("userid",userid);
+            if(tipoPago==1){
+                pagar(usuario,carro);
+                model.addAttribute("total", (carro.getPrecio() + 5) );
+                session.setAttribute("carro",new Carro());
+                return "finPago";
+            }
+            else{
+                session.setAttribute("carro",carro);
+                return "pagoTarjeta";
+            }
+            
 	}
         
+       
+        
+
+        
         // falta hacerlo
-        @RequestMapping(value="/terminarPedido", method = RequestMethod.GET)
-	public String terminarPedido(ModelMap model, HttpSession session) {
+        @RequestMapping(value="/pagoTarjeta", method = RequestMethod.GET)
+	public String terminarPedido(@RequestParam(value = "userid") int userid,
+                ModelMap model, HttpSession session) {
             Carro carro = (Carro) session.getAttribute("carro");
-            return "index";
+            Usuario usuario = usuDAO.get(userid);
+            pagar(usuario, carro);
+            session.setAttribute("carro",new Carro());
+            model.addAttribute("total", carro.getPrecio());
+            return "finPago";
 	}
+        
+         public void pagar(Usuario u, Carro c){
+             
+            Pedido p = new Pedido(u,c.getPrecio(),"Nuevo");
+            pedDAO.save(p);
+            
+            for (ProductoCarro productoCarro:c.getContenido()){
+                Producto prod = productoCarro.getProd();
+                Relacionproductopedido rel = new Relacionproductopedido(p.getIdpedido(),prod.getIdproducto(),c.getPrecio());
+                relDAO.save(rel);
+            }
+        }
         
     
 }

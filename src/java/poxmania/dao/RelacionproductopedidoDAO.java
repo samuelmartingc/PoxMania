@@ -12,7 +12,7 @@ import poxmania.model.Categoria;
 import poxmania.model.Relacionproductopedido;
 
 @Component
-public class RelacionproductopedidoDAO extends GeneralDAO<Categoria,Integer> {
+public class RelacionproductopedidoDAO extends GeneralDAO<Relacionproductopedido,Integer> {
 
     public RelacionproductopedidoDAO(){
         super();

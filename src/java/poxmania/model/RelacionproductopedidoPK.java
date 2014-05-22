@@ -34,6 +34,8 @@ public class RelacionproductopedidoPK implements Serializable {
         this.idpedido = idpedido;
         this.idproducto = idproducto;
     }
+    
+
 
     public int getIdpedido() {
         return idpedido;

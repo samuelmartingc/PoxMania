@@ -61,13 +61,11 @@ public class Pedido implements Serializable {
     public Pedido() {
     }
 
-    public Pedido(Integer idpedido) {
-        this.idpedido = idpedido;
-    }
-
-    public Pedido(Integer idpedido, int total) {
-        this.idpedido = idpedido;
+    
+    public Pedido(Usuario u, int total, String estado) {
+        this.idusuario = u;
         this.total = total;
+        this.estado = estado;
     }
 
     public Integer getIdpedido() {

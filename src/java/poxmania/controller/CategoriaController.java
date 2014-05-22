@@ -24,7 +24,7 @@ public class CategoriaController {
 	public String insertarCategoria(@RequestParam(value = "nombreCategoria") String nombreCategoria, 
             ModelMap model) {
             Categoria cat = new Categoria(nombreCategoria);
-            daoCat.saveOrUpdate(cat);
+            daoCat.save(cat);
             return "adminOpciones";
 	}
         
@@ -37,8 +37,8 @@ public class CategoriaController {
 	}
         
         @RequestMapping(value="/editarCategoriaConcreta", method = RequestMethod.GET)
-	public String editarCategoriaConcretapublic (@RequestParam (value = "id", required = false, defaultValue= "1")String idCat, ModelMap model) {
-            Categoria categoria = daoCat.get(Integer.parseInt(idCat));
+	public String editarCategoriaConcretapublic (@RequestParam (value = "id", required = false, defaultValue= "1")int idCat, ModelMap model) {
+            Categoria categoria = daoCat.get(idCat);
             model.addAttribute("categoria", categoria);
             return "editarCategoria";
 	}
@@ -46,11 +46,11 @@ public class CategoriaController {
     
         @RequestMapping(value="/editarCategoriaFin", method = RequestMethod.GET)
 	public String editarCategoriaFin(@RequestParam(value = "nombreCategoria") String nombreCategoria, 
-                @RequestParam(value = "idcategoria") String idCategoria,
+                @RequestParam(value = "idcategoria") int idCategoria,
                 ModelMap model) {
-            Categoria categoria = daoCat.get(Integer.parseInt(idCategoria));
+            Categoria categoria = daoCat.get(idCategoria);
             categoria.setNombrecategoria(nombreCategoria);
-            daoCat.saveOrUpdate(categoria);
+            daoCat.update(categoria);
             return "adminOpciones";
 	}
 }

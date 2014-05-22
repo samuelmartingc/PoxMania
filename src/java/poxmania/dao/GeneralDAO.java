@@ -17,10 +17,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import org.springframework.stereotype.Component;
 
 
-@Component
+
+
 public class GeneralDAO<T, ID extends Serializable> {
 
 
@@ -47,10 +47,18 @@ public class GeneralDAO<T, ID extends Serializable> {
     }
 
     
-    public void saveOrUpdate(T entity)  {
+    public void save(T entity)  {
         this.open();
         manager.getTransaction().begin();
         manager.persist(entity);
+        manager.getTransaction().commit();
+       this.close();
+    }
+    
+    public void update(T entity)  {
+        this.open();
+        manager.getTransaction().begin();
+        manager.merge(entity);
         manager.getTransaction().commit();
        this.close();
     }

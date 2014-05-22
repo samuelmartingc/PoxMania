@@ -6,10 +6,20 @@
 
 package poxmania.dao;
 
+
+import org.springframework.stereotype.Component;
+import poxmania.model.Datospersonales;
+
 /**
  *
- * @author S
+ * @autores: Samuel Martin y Juan Antonio Echeverrias 
  */
-public class DatosPersonalesDAO {
-    
-}
+
+@Component
+public class DatosPersonalesDAO extends GeneralDAO<Datospersonales,Integer>{
+       public DatosPersonalesDAO() {
+          super();
+       }
+        
+    }
+

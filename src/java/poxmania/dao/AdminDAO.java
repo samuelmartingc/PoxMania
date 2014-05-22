@@ -1,19 +1,21 @@
 package poxmania.dao;
+
+
 import java.util.List;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Component;
 import poxmania.dao.GeneralDAO;
 import poxmania.model.Administrador;
-import poxmania.model.Producto;
+
 
 /**
  *
- * @autores 
+ * @autores: Samuel Martin y Juan Antonio Echeverrias 
  */
 
   
 @Component
-public class AdminDAO extends GeneralDAO<Producto,Integer>{
+public class AdminDAO extends GeneralDAO<AdminDAO,Integer>{
     
       
       public AdminDAO() {

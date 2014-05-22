@@ -6,10 +6,19 @@
 
 package poxmania.dao;
 
+import org.springframework.stereotype.Component;
+import poxmania.model.Pedido;
+
 /**
  *
- * @author S
+ * @autores: Samuel Martin y Juan Antonio Echeverrias 
  */
-public class PedidoDAO {
+
+@Component
+public class PedidoDAO extends GeneralDAO <Pedido, Integer>{
+    
+    public PedidoDAO (){
+        super();
+    }
     
 }

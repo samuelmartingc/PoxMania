@@ -6,10 +6,19 @@
 
 package poxmania.dao;
 
+import org.springframework.stereotype.Component;
+import poxmania.model.Usuario;
+
 /**
  *
- * @author S
+ * @autores: Samuel Martin y Juan Antonio Echeverrias 
  */
-public class UsuarioDAO {
+
+@Component
+public class UsuarioDAO extends GeneralDAO <Usuario, Integer>{
+    
+    public UsuarioDAO (){
+        super();
+    }
     
 }

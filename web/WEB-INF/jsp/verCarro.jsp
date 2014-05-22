@@ -20,20 +20,41 @@
          
         <!-- formulario de modificación de pedido -->
          
-        <form method="get" action="ModificarCarro" name="agregarEnCarro"> 
+        <table>
             <c:forEach var="producto" items="${carro.contenido}" >
-            <p> <input type="checkbox" name="id" value="${producto.prod.idproducto}">
-                 <img title="imagen" alt="imagen de ${producto.prod.nombreproducto}" src=".${producto.prod.imagen}"  height="50px">
-                 Nombre: ${producto.prod.nombreproducto}  ${producto.prod.precio} &euro; 
-                 Cantidad : <input type="text" name="${producto.prod.idproducto}" value="${producto.cantidad}" size="1"></p>
+                <tr>
+                    <td>
+                        <img title="imagen" alt="imagen de ${producto.prod.nombreproducto}" src=".${producto.prod.imagen}"  height="50px">
+                        <a href=<c:url value="/detallesProducto?id=${producto.prod.idproducto}" /> >${producto.prod.nombreproducto}</a>  
+                        <div class="cantidad">
+                            <form method="get" action=<c:url value="/decrementar" />>
+                                <input type="hidden" name="id" value="${producto.prod.idproducto}"></input>
+                                <input class="decrementar" type="submit" value="-" ></input>
+                            </form>    
+                            <input type="text" name="${producto.prod.idproducto}" value="${producto.cantidad}" size="1" readonly></input>
+                             <form method="get" action=<c:url value="/incrementar" />>
+                                <input type="hidden" name="id" value="${producto.prod.idproducto}"></input>
+                                <input class="incrementar" type="submit" value="+" ></input>
+                            </form>  
+                            <a href=<c:url value="/sacarDeCarro?id=${producto.prod.idproducto}" /> >Eliminar</a>  
+                            <p>Precio: ${producto.prod.precio} <span class="glyphicon glyphicon-euro"></span><p>
+                            </td>
+                    <td>
+                        Precio Total:   ${producto.prod.precio * producto.cantidad} <span class="glyphicon glyphicon-euro"></span>
+
+                    </td>
+                
+                 </tr>
+                 
             </c:forEach>
-            <h1> Total: ${carro.total} artículos ........... ${carro.precio} &euro;</h1>
-            <br>
-            <input type="checkbox" name="vaciar" value="si">Vaciar todo el carro
-            <br><br>
-            <input type="submit" name="accion" value="Modificar">
-            <input type="submit" name="accion" value="Sacar">
-        </form>
+                 </table>  
+        
+            <div class="pedido">
+                <a href=<c:url value="/hacerPedido?carro=${carro}" /> class="btn btn-primary" role="button">Hacer pedido</a>
+                <p>Importe Total: ${carro.precio} <span class="glyphicon glyphicon-euro"></span></p>
+            </div>
+                  
+            
         <br><br>   
         <!-- formulario de realizar pedido -->   
         <form method="get" action="FinalizarPedido" name="agregarEnCarro"> 

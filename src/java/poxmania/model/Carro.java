@@ -89,6 +89,33 @@ public class Carro implements Serializable{
         return salida;
     }
 
+    
+     public int decrementarUnidades (int id, int cantidad){
+    //incrementa las unidadedes de un producto del carro    
+        int salida=0;
+        if (cantidad < 1){//se ha metido un número erroneo de unidades a incrementar
+            salida=-1;
+        }
+        else{
+            int posicion=estaEnCarroId(id);
+            if (posicion>=0){//el producto se encuentra en el carro y se procede a incrementar sus unidades
+                if(contenido.get(posicion).decrementar(cantidad)){
+                    total-=cantidad;
+                    precio-=( contenido.get(posicion).getProd().getPrecio()*cantidad);
+                    salida=1;
+                    if (contenido.get(posicion).getCantidad()==0){
+                        sacarDeCarro(id);
+                    }
+                }
+                else{//el producto no está en el carro
+                    salida=0;
+                }
+            }    
+        }
+        
+        return salida;
+    }
+     
     public boolean sacarDeCarro (int id) {
     //saca un producto del carro (todas las unidades de dicho producto)    
         boolean exito=false;

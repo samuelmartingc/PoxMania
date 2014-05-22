@@ -108,8 +108,8 @@ public class IndexController {
         
     ////    //MODIFICADO y tn index.jsp el enlace que manda a este método
         @RequestMapping(value="/detallesProducto", method = RequestMethod.GET)
-	public String detallesProducto(@RequestParam (value = "id") String id,ModelMap model) {
-            Producto producto = dao.get(Integer.parseInt(id));
+	public String detallesProducto(@RequestParam (value = "id") int id,ModelMap model) {
+            Producto producto = dao.get(id);
             model.addAttribute("prod",producto);
 	return "detallesProducto";
 	}

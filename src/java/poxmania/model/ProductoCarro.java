@@ -64,6 +64,18 @@ public class ProductoCarro {
          return exito;
     }
     
+    public boolean decrementar (int unidades){
+    //incrementa las unidades    
+        boolean exito=false;
+       
+        if ((unidades>0)&& (unidades<=this.cantidad)){
+            this.cantidad-=unidades;
+            exito=true;
+            
+        }
+         return exito;
+    }
+    
     
     public String getIdString (){
         return Integer.toString(prod.getIdproducto());

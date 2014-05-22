@@ -37,7 +37,7 @@ public class CategoriaController {
 	}
         
         @RequestMapping(value="/editarCategoriaConcreta", method = RequestMethod.GET)
-	public String editarCategoriaConcretapublic (@RequestParam (value = "id", required = false, defaultValue= "1")int idCat, ModelMap model) {
+	public String editarCategoriaConcreta (@RequestParam (value = "id", required = false, defaultValue= "1")int idCat, ModelMap model) {
             Categoria categoria = daoCat.get(idCat);
             model.addAttribute("categoria", categoria);
             return "editarCategoria";

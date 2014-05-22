@@ -51,11 +51,11 @@ public class ProductoController {
             Producto prod = new Producto(nombre, descripcion, precio,imagen,stock,cat);
             daoProd.save(prod);
             
-            return "opcionesAdmin";
+            return "adminOpciones";
 	}
         
         @RequestMapping(value="/editarProducto", method = RequestMethod.GET)
-	public String editarCategoria(ModelMap model) {
+	public String editarProducto(ModelMap model) {
             List <Producto> listaProductos = null;
             listaProductos = daoProd.findAll();
             model.addAttribute("listaProductos", listaProductos);
@@ -63,7 +63,7 @@ public class ProductoController {
 	}
         
         @RequestMapping(value="/editarProductoConcreto", method = RequestMethod.GET)
-	public String editarCategoriaConcretapublic (@RequestParam (value = "id", required = false, defaultValue= "1")int idProd, ModelMap model) {
+	public String editarProductoConcreto (@RequestParam (value = "id", required = false, defaultValue= "1")int idProd, ModelMap model) {
             Producto prod = daoProd.get(idProd);
             List <Categoria> listaCategorias = null;
             listaCategorias = daoCat.findAll();
@@ -94,6 +94,17 @@ public class ProductoController {
             return "adminOpciones";
 	}
         
+        @RequestMapping(value="/bajaProducto", method = RequestMethod.GET)
+	public String bajaProducto(ModelMap model) {
+            List <Producto> listaProductos = null;
+            listaProductos = daoProd.findAll();
+            model.addAttribute("listaProductos", listaProductos);
+            return "bajaProducto";
+	}
     
-    
+        @RequestMapping(value="/borrarProductoConcreto", method = RequestMethod.GET)
+	public String borrarProductoConcreto(@RequestParam (value = "id", required = false, defaultValue= "1")int idProd, ModelMap model) {
+            daoProd.delete(idProd);
+            return "adminOpciones";
+	}
 }

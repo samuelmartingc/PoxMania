@@ -35,7 +35,9 @@
   </ul>
 </div>
   
-    
+    <ul class="list-group">
+          <a class="col-xs-6 btn btn-primary btn-block btn-lg" href="<c:url value="/opcionesAdminOK" />" >Volver al índice</a>
+  </ul>
     
     </body>
 </html>

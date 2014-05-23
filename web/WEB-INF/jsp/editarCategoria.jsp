@@ -41,7 +41,7 @@
                     <hr class="colorgraph">
                     <div class="row">
                         <div class="col-xs-6 col-md-6"><input type="submit" value="Editar" class="btn btn-primary btn-block btn-lg" tabindex="9"></div>
-                        <div class="col-xs-6 col-md-6"><a href=<c:url value="/opcionesAdminOK"/> class="btn btn-success btn-block btn-lg" tabindex="10" >Volver</a></div>
+                        <div class="col-xs-6 col-md-6"><a href=<c:url value="/editarCategoria"/> class="btn btn-success btn-block btn-lg" tabindex="10" >Volver</a></div>
                     </div>
                 </form>
             </div>

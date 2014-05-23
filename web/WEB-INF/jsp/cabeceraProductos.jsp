@@ -40,7 +40,8 @@
                 <li><a href=<c:url value="/registro" />>Registrarse</a></li>
               </c:if>
                 <c:if test="${user != ''}">
-                    <li ><a id="user" href=<c:url value="/logout" /> >${user} Logout</a></li>
+                    <li ><a id="user" href=<c:url value="/verMisPedidos?uId=${userid}" /> >${user}</a></li>
+                    <li ><a id="user" href=<c:url value="/logout" /> >Logout</a></li>
                 </c:if>
               
               

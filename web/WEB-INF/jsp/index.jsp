@@ -35,7 +35,23 @@
                         <div class="caption">
                             <h3 style="text-align: center">${producto.nombreproducto} ${producto.precio} <span class="glyphicon glyphicon-euro"></span></h3>
                             
-                            <p><a href=<c:url value="/meterEnCarro?id=${producto.idproducto}" /> class="btn btn-primary" role="button">Añadir al carro</a> <a href=<c:url value="/detallesProducto?id=${producto.idproducto}" /> class="btn btn-default" role="button">Ver detalles</a></p>
+                            <c:if test="${producto.stock < 5}">
+                                <c:if test="${producto.stock > 0}">
+                                    <h2 style="color:red">¡¡ Corre que quedan pocos !!</h2>
+                                </c:if>
+                                
+                            </c:if>
+                                    <c:if test="${producto.stock >= 5}"><h2 style="color: white"> .</h2></c:if>
+                                    <c:if test="${producto.stock <= 0}"><h2> Disponible en 3 semanas</h2></c:if>
+                            <p>
+                            <c:if test="${producto.stock <= 0}">
+                                <a href=<c:url value="/meterEnCarro?id=${producto.idproducto}" /> class="btn btn-primary" role="button" disabled>Añadir al carro</a> 
+                               
+                            </c:if>
+                            <c:if test="${producto.stock > 0}">
+                                <a href=<c:url value="/meterEnCarro?id=${producto.idproducto}" /> class="btn btn-primary" role="button" >Añadir al carro</a> 
+                            </c:if>
+                                <a href=<c:url value="/detallesProducto?id=${producto.idproducto}" /> class="btn btn-default" role="button">Ver detalles</a></p>
                         </div>
                     </div>
                 </div>

@@ -36,7 +36,19 @@
     <div class="derecha">
         <h1 class="page-header">${prod.precio} €</h1>
         <p class="lead">${prod.descripcion}</p>
-        <p><a href="<c:url value="/meterEnCarro?id=${prod.idproducto}" />" class="btn btn-primary" role="button">Comprar</a> <a href="/index" class="btn btn-default" role="button">Volver al inicio</a></p>
+        <p class="lead">Quedan en stock ${prod.stock} unidades</p>
+        <p>
+        <c:if test="${prod.stock > 0}">
+            <c:if test="${prod.stock < 5}">
+            <h2 style="color:red">¡¡ Corre que quedan pocos !!</h2></p><p>
+            </c:if>
+            <a href="<c:url value="/meterEnCarro?id=${prod.idproducto}" />" class="btn btn-primary" role="button">Comprar</a>
+        </c:if>
+        <c:if test="${prod.stock <= 0}">
+            <a href="<c:url value="/meterEnCarro?id=${prod.idproducto}" />" class="btn btn-primary" role="button" disabled>Comprar</a>
+        </c:if>
+             
+         <a href="/index" class="btn btn-default" role="button">Volver al inicio</a></p>
     </div>
         </div>
         

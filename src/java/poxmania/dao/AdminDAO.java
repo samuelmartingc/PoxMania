@@ -4,7 +4,6 @@ package poxmania.dao;
 import java.util.List;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Component;
-import poxmania.dao.GeneralDAO;
 import poxmania.model.Administrador;
 
 
@@ -32,11 +31,6 @@ public class AdminDAO extends GeneralDAO<AdminDAO,Integer>{
         this.close();
         return lista;
     }
-    
-      
-      
 
-    
-   
     
 }

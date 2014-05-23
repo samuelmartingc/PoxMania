@@ -3,7 +3,6 @@ package poxmania.dao;
 
 import java.util.List;
 import javax.persistence.*;
-
 import poxmania.model.Producto;
 
 public class LibreriaDAO {
@@ -17,11 +16,9 @@ public class LibreriaDAO {
     }
 
     public void close() {
-
         if (manager != null) {
             manager.close();
         }
-
         if (factory != null) {
             factory.close();
         }
@@ -31,19 +28,14 @@ public class LibreriaDAO {
         return getProductosQuery("l.titulo = \"" + titulo + "\"");
     }
 
-
-
     public List<Producto> getTodosProductos() {
         return getProductosQuery(null);
     }
-
     private List<Producto> getProductosQuery(String where) {
-
         String sql = "select l from Producto l";
         if (where != null) {
             sql += " where " + where;
         }
-
         Query query = manager.createQuery(sql);
         return (List<Producto>) query.getResultList();
     }

@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package poxmania.dao;
 
-/**
- *
- * @author S
- */
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -23,11 +13,8 @@ import javax.persistence.TypedQuery;
 
 public class GeneralDAO<T, ID extends Serializable> {
 
-
     private EntityManager manager;
     private EntityManagerFactory factory;
-
-
 
     public GeneralDAO() {
         factory = Persistence.createEntityManagerFactory("Poxmania_280PU");
@@ -38,9 +25,7 @@ public class GeneralDAO<T, ID extends Serializable> {
 
         if (!factory.isOpen()) {
            factory = Persistence.createEntityManagerFactory("Poxmania_280PU");
-           
         }
-
         if (!manager.isOpen()) {
             manager = factory.createEntityManager();
         }
@@ -99,11 +84,9 @@ public class GeneralDAO<T, ID extends Serializable> {
     }
 
     public void close() {
-
         if (manager != null) {
             manager.close();
         }
-
         if (factory != null) {
             factory.close();
         }

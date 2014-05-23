@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package poxmania.dao;
 import java.util.List;
 import javax.persistence.TypedQuery;
@@ -22,8 +16,7 @@ public class ProductoDAO extends GeneralDAO<Producto,Integer>{
       
       public ProductoDAO() {
           super();
-        
-    }
+      }
  
     public List<Producto> findByNombreproducto (String nombre){
         this.open();
@@ -60,10 +53,5 @@ public class ProductoDAO extends GeneralDAO<Producto,Integer>{
         this.close();
         return lista;
     }
-      
-      
 
-    
-   
-    
 }

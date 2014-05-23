@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +26,7 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                <form role="form" id="form" method="get" action=<c:url value="/insertarProducto"/>>
+                <form role="form" id="form" method="POST" enctype="multipart/form-data" action=<c:url value="/insertarProducto"/>>
                     <h2>Alta de nuevo producto</h2>
                     <hr class="colorgraph">
                     <div class="row">
@@ -56,7 +57,7 @@
                     </div>
                     <div class="row">
                             <div class="form-group">
-                                <input type="text" class="form-control input-lg" placeholder="imagen" name="imagen" tabindex="5" required>
+                                <input type="file" class="form-control input-lg" placeholder="imagen" name="imagen" tabindex="5" required>
                             </div>
                     </div>
                     <div class="row">

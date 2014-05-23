@@ -129,10 +129,14 @@ public class CarroController {
             model.addAttribute("usuario", usuario);
             model.addAttribute("userid",userid);
             if(tipoPago==1){
-                pagar(usuario,carro);
+                int u = pagar(usuario,carro);
                 model.addAttribute("total", (carro.getPrecio() + 5) );
                 carro.vaciarCarro();
                 session.setAttribute("carro",carro);
+                if (u == -1){
+                model.addAttribute("usu", producto.get(u));
+                return "productoAgotado";
+            }
                 return "finPago";
             }
             else{
@@ -147,20 +151,29 @@ public class CarroController {
                 ModelMap model, HttpSession session) {
             Carro carro = (Carro) session.getAttribute("carro");
             Usuario usuario = usuDAO.get(userid);
-            pagar(usuario, carro);
+            int u = pagar(usuario, carro);
             session.setAttribute("carro",new Carro());
             model.addAttribute("total", carro.getPrecio());
+            if (u == -1){
+                model.addAttribute("usu", producto.get(u));
+                return "productoAgotado";
+            }
+            
             return "finPago";
 	}
         
-         public void pagar(Usuario u, Carro c){
+         public int pagar(Usuario u, Carro c){
             Pedido p = new Pedido(u,c.getPrecio(),"Nuevo");
             pedDAO.save(p);
             for (ProductoCarro productoCarro:c.getContenido()){
                 Producto prod = productoCarro.getProd();
+                if(prod.getStock() < 1){
+                    return prod.getIdproducto();
+                }
                 Relacionproductopedido rel = new Relacionproductopedido(p.getIdpedido(),prod.getIdproducto(),productoCarro.getCantidad());
                 relDAO.save(rel);
             }
+            return -1;
         }
         
     

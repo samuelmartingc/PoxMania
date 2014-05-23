@@ -53,7 +53,14 @@ public class UsuarioController {
                 session.setAttribute("user", nick);
                 session.setAttribute("userid", usuario.getIdusuario());
             }
-            return "index";
+            return "redirect:index";
+	}
+        
+        @RequestMapping(value="/logout", method = RequestMethod.GET)
+	public String logOut(HttpSession session) {
+            session.setAttribute("user", "");
+            session.setAttribute("userid", "");
+	return "redirect:index";
 	}
     
      

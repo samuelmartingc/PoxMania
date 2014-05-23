@@ -56,7 +56,7 @@ public class IndexController {
             }
         }
         model.addAttribute("listaCategorias", listaCategorias);
-        model.addAttribute("listaProductos", listAuxProd);
+        model.addAttribute("listaproductos", listAuxProd);
 	return "index";
 	}
         
@@ -79,10 +79,5 @@ public class IndexController {
 	}
         
         
-        @RequestMapping(value="/logout", method = RequestMethod.GET)
-	public String logOut(HttpSession session) {
-            session.setAttribute("user", "");
-            session.setAttribute("userid", "");
-	return "index";
-	}
+        
 }

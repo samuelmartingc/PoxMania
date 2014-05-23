@@ -26,11 +26,11 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                 <form role="form" id="form" method="get" action=<c:url value="/pagoTarjeta"/>>
-                    <h2>Datos personales para el envío</h2>
+                    <h2>Datos de pago</h2>
                     <hr class="colorgraph">
                     <div class="row">
                             <div class="form-group">
-                                <input type="text" class="form-control input-lg" placeholder="Nombre" name="nombre" value="${usuario.nombre}" tabindex="1" required>
+                                <input type="text" class="form-control input-lg" placeholder="Nombre" name="nombre" value="Nombre del titular: ${usuario.nombre}" tabindex="1" required>
                                 <input type="text" name="userid" value="${usuario.idusuario}" hidden>
                                 
                             </div>
@@ -38,15 +38,31 @@
   
                     <div class="row">
                             <div class="form-group">
-                                <input type="text" min="0" class="form-control input-lg" placeholder="Direccion" name="direccion" value="${usuario.direccion}" tabindex="4" required>
+                                <input type="text" min="0" class="form-control input-lg" placeholder="Nº de la tarjeta" name="direccion" value="" tabindex="2" required>
                                 
                             </div>
                         
                     </div>
+                                <h3>Fecha de expiracion y nº de verificación</h3>
                     <div class="row">
-                            <div class="form-group">
-                                <input type="text" class="form-control input-lg" placeholder="telefono" name="telefono" value="${usuario.telefono}" tabindex="5" required>
-                            </div>
+                        <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Mes</label>
+                            <input type="number" min="1" max="12" class="form-control" placeholder="MM" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Año</label>
+                            <input type="number" min="2014" max="2099" class="form-control" placeholder="YYYY" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>CVC</label>
+                            <input type="number" min="100" max="999" class="form-control" placeholder="Ej. 331" required>
+                        </div>
+                    </div>
                     </div>
           
                             <div class="row">

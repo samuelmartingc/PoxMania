@@ -25,36 +25,13 @@ public class IndexController {
         
         @Autowired
         CategoriaDAO daoCat;
- /*
-	//@RequestMapping(method = RequestMethod.GET)
-        @RequestMapping(value="/index", method = RequestMethod.GET)
-	public String index(ModelMap model) {
-       
-        ProductoDAO dao = new ProductoDAO();
-        List <Producto> listaProductos = null;
-        listaProductos = dao.getTodosProductos();
-        
-        List <Producto> listaProductos = null;
-        listaProductos = dao.findAll();
-        
-        List <Categoria> listaCategorias = null;
-        listaCategorias = daoCat.findAll();
-        
-        model.addAttribute("listaCategorias", listaCategorias);
-        model.addAttribute("listaProductos", listaProductos);
-        model.addAttribute("message", "Spring 3 MVC Hello World");
-	return "index";
 
-	}
-        */
-        
         @RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(ModelMap model,HttpSession session) {
         
              
         List <Producto> listaProductos = null;
-        //listaProductos = dao.findAll();
-        
+
         if (session.isNew()){ //si la sesión es nueva, creamos una variable carro a null y la guardamos en la sesión
              Carro carro = new Carro();
              session.setAttribute("carro",carro);
@@ -70,7 +47,6 @@ public class IndexController {
         
         model.addAttribute("listaCategorias", listaCategorias);
         model.addAttribute("listaproductos", listaProductos);
-        model.addAttribute("message", "Spring 3 MVC Hello World");
 	return "index";
 
 	}
@@ -104,6 +80,7 @@ public class IndexController {
         
         @RequestMapping(value="/registro", method = RequestMethod.GET)
 	public String registro(ModelMap model) {
+        model.addAttribute("aceptar", "/images/Aceptar.jpg");
 	return "registro";
 	}
         
@@ -111,8 +88,29 @@ public class IndexController {
         @RequestMapping(value="/detallesProducto", method = RequestMethod.GET)
 	public String detallesProducto(@RequestParam (value = "id") int id,ModelMap model) {
             Producto producto = dao.get(id);
+            List <Categoria> listaCategorias = null;
+            listaCategorias = daoCat.findAll();
+            model.addAttribute("listaCategorias", listaCategorias);
             model.addAttribute("prod",producto);
 	return "detallesProducto";
+	}
+        
+        
+        @RequestMapping(value="/logout", method = RequestMethod.GET)
+	public String logOut(HttpSession session) {
+            /*
+            List <Producto> listaProductos = null;
+            listaProductos=(List <Producto>)session.getAttribute("listaproductos");
+            List <Categoria> listaCategorias = null;
+            listaCategorias = daoCat.findAll();
+            */
+            session.setAttribute("user", "");
+            session.setAttribute("userid", "");
+            /*
+            model.addAttribute("listaCategorias", listaCategorias);
+            model.addAttribute("listaproductos", listaProductos);
+                    */
+	return "index";
 	}
 	
 }

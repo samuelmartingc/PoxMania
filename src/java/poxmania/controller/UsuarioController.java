@@ -39,14 +39,13 @@ public class UsuarioController {
             
             String vista="registro";
             Usuario usuario = daousu.findByNick(nick);
+           
             if (usuario==null){
                 daousu.save(new Usuario(nick,password,first_name+" "+last_name,direccion,telefono));
                 session.setAttribute("user", nick);
                 vista="index";
             }
-            else{
-                    vista="registro";
-            }
+
             return vista;
 	}
         

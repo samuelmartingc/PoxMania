@@ -95,11 +95,19 @@ public class CarroController {
     }
     
     @RequestMapping(value="/hacerPedido", method = RequestMethod.GET)
+    @SuppressWarnings("empty-statement")
 	public String hacerPedido(ModelMap model, HttpSession session) {
             Carro carro = (Carro) session.getAttribute("carro");
             String user = (String) session.getAttribute("user");
-            int userid= (int) session.getAttribute("userid");
-            Usuario usuario = usuDAO.get(userid);
+            int userid = -1;
+            Usuario usuario = null;
+            if ( (session.getAttribute("user") != null) && (session.getAttribute("user") != "") ){
+                userid= (int) session.getAttribute("userid");
+                usuario = usuDAO.get(userid);
+            }
+            
+            
+            
             if ( (carro!= null) && (!carro.getContenido().isEmpty()) ){ // si no esta vacio
                 if (user != ""){
                     model.addAttribute("carro", session.getAttribute("carro"));
@@ -135,7 +143,8 @@ public class CarroController {
             if(tipoPago==1){
                 pagar(usuario,carro);
                 model.addAttribute("total", (carro.getPrecio() + 5) );
-                session.setAttribute("carro",new Carro());
+                carro.vaciarCarro();
+                session.setAttribute("carro",carro);
                 return "finPago";
             }
             else{

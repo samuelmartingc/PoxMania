@@ -69,8 +69,7 @@
                         <div class="col-xs-3 col-sm-3 col-md-3">
                             
                             <label for="aceptar" title="imagen">
-
-                            <img src="/Poxmania_280/images/Aceptar.jpg" alt="acepto condiciones"  title="imagen"/>
+                            <img src=<c:url value="${aceptar}"/> alt="acepto_condiciones"  title="imagen"/>
                         </label>
                         <input type="checkbox" id="aceptar" name="acept" value="aceptar"  title="imagen"/>
 

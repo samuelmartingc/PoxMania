@@ -23,8 +23,7 @@
     <body>
         
     <c:import url="cabeceraProductos.jsp" charEncoding="utf-8"/>
-        <h1>Hello World!</h1>
-        <h2>${message}</h2>
+
         
         <div class="listaproductos">
             <div class="row">

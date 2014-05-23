@@ -41,8 +41,6 @@ public class PedidoController {
                 List <Relacionproductopedido> listaRelacion = daoRel.findByIdPedido(ped.getIdpedido());
                 List <ProductoCarro> listaPC = new ArrayList <ProductoCarro>();
                 for(Relacionproductopedido rel:listaRelacion){
-                    System.out.println(rel.getCantidad());
-                    System.out.println(rel.getProducto().getNombreproducto());
                     listaPC.add(new ProductoCarro(rel.getProducto(),rel.getCantidad()));
                     
                 }

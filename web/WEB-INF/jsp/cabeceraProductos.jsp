@@ -35,12 +35,18 @@
           </ul>
             
           <ul class="nav navbar-nav navbar-right">
+               <c:if test="${user == ''}">
+                <li ><a id="loginLi" href="#">Login</a></li>
+                <li><a href=<c:url value="/registro" />>Registrarse</a></li>
+              </c:if>
+                <c:if test="${user != ''}">
+                    <li ><a id="user" href=<c:url value="/logout" /> >${user} Logout</a></li>
+                </c:if>
               
-            <li ><a id="loginLi" href="#">Login</a></li>
-            <li><a href=<c:url value="/registro" />>Registrarse</a></li>
+              
           </ul>
           <ul class="nav navbar-nav navbar-right">
-              <li ><a id="user" href="#">${user}</a></li>
+              
             <li>
                 
                 <a class="navbar-brand" href=<c:url value="/verCarro" /> ><span class="glyphicon glyphicon-shopping-cart"></span>Ver Carro</a>

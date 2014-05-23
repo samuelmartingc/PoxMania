@@ -33,7 +33,16 @@
                         
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="navbar-brand" href=<c:url value="/verCarro" /> ><span class="glyphicon glyphicon-shopping-cart"></span>Ver Carro</a>
+                    <c:if test="${carro.total == 0}">
+                        <a class="navbar-brand" href=<c:url value="/verCarro" /> >
+                    </c:if>
+                    
+                        <c:if test="${carro.total != 0}">
+                            <a class="navbar-brand" style="color:blue" href=<c:url value="/verCarro" /> >
+                        </c:if>
+                        <span class="glyphicon glyphicon-shopping-cart"></span>Ver Carro
+                    
+                    </a>
                 </li>
             </ul>
         </div>

@@ -34,8 +34,8 @@
                     <div class="thumbnail">
                         <img  alt="300x200" src=<c:url value="${producto.imagen}"/> style="width: 300px; height: 200px;">
                         <div class="caption">
-                            <h3>${producto.nombreproducto}</h3>
-                            <p>${producto.descripcion}</p>
+                            <h3 style="text-align: center">${producto.nombreproducto} ${producto.precio} <span class="glyphicon glyphicon-euro"></span></h3>
+                            
                             <p><a href=<c:url value="/meterEnCarro?id=${producto.idproducto}" /> class="btn btn-primary" role="button">Añadir al carro</a> <a href=<c:url value="/detallesProducto?id=${producto.idproducto}" /> class="btn btn-default" role="button">Ver detalles</a></p>
                         </div>
                     </div>

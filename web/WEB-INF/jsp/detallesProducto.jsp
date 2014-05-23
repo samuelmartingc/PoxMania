@@ -30,12 +30,12 @@
             <h1 class="page-header">Camara cara</h1>
         <div class="izquierda">
             <div class="thumbnail">
-                <img  alt="300x200" src="/Poxmania_280/images/camaraCanon.jpg" style="width: 100%; ">
+                <img  alt="300x200" src=<c:url value="${prod.imagen}" /> style="width: 100%; ">
             </div>
         </div>
     <div class="derecha">
-        <h1 class="page-header">999.999 €</h1>
-        <p class="lead">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
+        <h1 class="page-header">${prod.precio} €</h1>
+        <p class="lead">${prod.descripcion}</p>
         <p><a href="<c:url value="/meterEnCarro?id=${prod.idproducto}" />" class="btn btn-primary" role="button">Comprar</a> <a href="/index" class="btn btn-default" role="button">Volver al inicio</a></p>
     </div>
         </div>

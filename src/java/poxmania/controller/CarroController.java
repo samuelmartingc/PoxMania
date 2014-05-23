@@ -133,7 +133,7 @@ public class CarroController {
                 model.addAttribute("total", (carro.getPrecio() + 5) );
                 carro.vaciarCarro();
                 session.setAttribute("carro",carro);
-                if (u == -1){
+                if (u != -1){
                 model.addAttribute("usu", producto.get(u));
                 return "productoAgotado";
             }
@@ -154,8 +154,8 @@ public class CarroController {
             int u = pagar(usuario, carro);
             session.setAttribute("carro",new Carro());
             model.addAttribute("total", carro.getPrecio());
-            if (u == -1){
-                model.addAttribute("usu", producto.get(u));
+            if (u != -1){
+                model.addAttribute("productoAgotado", producto.get(u));
                 return "productoAgotado";
             }
             
@@ -164,12 +164,19 @@ public class CarroController {
         
          public int pagar(Usuario u, Carro c){
             Pedido p = new Pedido(u,c.getPrecio(),"Nuevo");
+            for (ProductoCarro productoCarro:c.getContenido()){ // comprobar si hay stock de todo
+                Producto prod = productoCarro.getProd();
+                if( (prod.getStock()- productoCarro.getCantidad() ) < 0){
+                    return prod.getIdproducto();
+                }
+            }
             pedDAO.save(p);
             for (ProductoCarro productoCarro:c.getContenido()){
                 Producto prod = productoCarro.getProd();
-                if(prod.getStock() < 1){
-                    return prod.getIdproducto();
-                }
+                // hay que restar en el stock
+                prod.setStock(prod.getStock() - productoCarro.getCantidad());
+                producto.update(prod);
+                
                 Relacionproductopedido rel = new Relacionproductopedido(p.getIdpedido(),prod.getIdproducto(),productoCarro.getCantidad());
                 relDAO.save(rel);
             }

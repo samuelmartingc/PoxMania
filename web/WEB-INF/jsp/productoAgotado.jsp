@@ -12,9 +12,9 @@
         <script src=<c:url value="/js/jquery.js" /> type="text/javascript"></script> 
     </head>
     <body style="text-align: center">
-        <h1>Finalizacion de su compra</h1> <br>
-        <h2>En unos días le llegará su pedido, muchas gracias por su confianza</h2>
-        <h3>El importe total es de ${total} € </h3>
+        <h1>Error en su compra</h1> <br>
+        <h2>Lamentamos comunicarle que no tenemos disponibles algunos articulos, como ${productoAgotado.nombreproducto}</h2>
+        <h3>Lo sentimos mucho, y rogamos disculpe las molestias </h3>
         <br>
         <a href=<c:url value="/index"/> class="btn btn-success btn-block btn-lg" tabindex="10" style="max-width:20%; margin: auto">Volver al inicio</a>
     </body>

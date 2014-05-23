@@ -68,26 +68,44 @@ public class ProductoController {
             return "editarProducto";
 	}
         
-        @RequestMapping(value="/editarProductoFin", method = RequestMethod.GET)
+        @RequestMapping(value="/editarProductoFin", method = RequestMethod.POST)
 	public String editarProductoFin(@RequestParam(value = "nombre") String nombre,
                 @RequestParam(value = "categoria") String categoria,
                 @RequestParam(value = "idproducto") int id,
                 @RequestParam(value = "descripcion") String descripcion,
                 @RequestParam(value = "precio") double precio,
-                @RequestParam(value = "imagen") String imagen,
+                @RequestParam(value = "imagen") MultipartFile imagen,
+                @RequestParam(value = "rutaImg") String rutaImg,
                 @RequestParam(value = "stock") int stock,
                 ModelMap model) {
+            
+            if (!imagen.isEmpty()) {
+            try {
+                validateImage(imagen);
+ 
+            } catch (RuntimeException re) {
+                //bindingResult.reject(re.getMessage());
+                return "adminOpciones";
+            }
+ 
+            try {
+                rutaImg = saveImage(imagen.getOriginalFilename() + ".jpg", imagen);
+            } catch (IOException e) {
+                //bindingResult.reject(e.getMessage());
+                return "adminOpciones";
+            }
+        }   
             Producto producto = daoProd.get(id);
             String [] idCat = categoria.split("\\s+");
             Categoria cat = daoCat.get(Integer.parseInt(idCat[0]));
             producto.setCategoria(cat);
             producto.setDescripcion(descripcion);
-            producto.setImagen(imagen);
+            producto.setImagen(rutaImg);
             producto.setNombreproducto(nombre);
             producto.setPrecio(precio);
             producto.setStock(stock);
             daoProd.update(producto);
-            return "adminOpciones";
+            return "redirect:editarProducto";
 	}
         
         @RequestMapping(value="/bajaProducto", method = RequestMethod.GET)

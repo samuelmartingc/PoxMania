@@ -5,7 +5,6 @@
  */
 
 package poxmania.controller;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +17,7 @@ import poxmania.dao.ProductoDAO;
 import poxmania.model.Categoria;
 import poxmania.model.Producto;
 
-/**
- *
- * @author S
- */
+
 @Controller
 public class ProductoController {
     @Autowired
@@ -50,7 +46,6 @@ public class ProductoController {
             Categoria cat = daoCat.get(Integer.parseInt(idCat[0]));
             Producto prod = new Producto(nombre, descripcion, precio,imagen,stock,cat);
             daoProd.save(prod);
-            
             return "adminOpciones";
 	}
         

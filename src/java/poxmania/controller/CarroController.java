@@ -6,7 +6,6 @@
 
 package poxmania.controller;
 
-import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -99,9 +98,6 @@ public class CarroController {
                 userid= (int) session.getAttribute("userid");
                 usuario = usuDAO.get(userid);
             }
-            
-            
-            
             if ( (carro!= null) && (!carro.getContenido().isEmpty()) ){ // si no esta vacio
                 if (user != ""){
                     model.addAttribute("carro", session.getAttribute("carro"));
@@ -115,7 +111,6 @@ public class CarroController {
             else{ //carro vacio
                 return "index";
             }
-            
 	}
         
         @RequestMapping(value="/pago", method = RequestMethod.GET)
@@ -131,7 +126,6 @@ public class CarroController {
             usuario.setNombre(nombre);
             usuario.setTelefono(telefono);
             usuDAO.update(usuario);
-            
             model.addAttribute("usuario", usuario);
             model.addAttribute("userid",userid);
             if(tipoPago==1){
@@ -145,14 +139,9 @@ public class CarroController {
                 session.setAttribute("carro",carro);
                 return "pagoTarjeta";
             }
-            
 	}
         
        
-        
-
-        
-        // falta hacerlo
         @RequestMapping(value="/pagoTarjeta", method = RequestMethod.GET)
 	public String terminarPedido(@RequestParam(value = "userid") int userid,
                 ModelMap model, HttpSession session) {
@@ -165,10 +154,8 @@ public class CarroController {
 	}
         
          public void pagar(Usuario u, Carro c){
-             
             Pedido p = new Pedido(u,c.getPrecio(),"Nuevo");
             pedDAO.save(p);
-            
             for (ProductoCarro productoCarro:c.getContenido()){
                 Producto prod = productoCarro.getProd();
                 Relacionproductopedido rel = new Relacionproductopedido(p.getIdpedido(),prod.getIdproducto(),productoCarro.getCantidad());

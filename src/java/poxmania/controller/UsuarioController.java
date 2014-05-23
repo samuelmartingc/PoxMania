@@ -9,8 +9,6 @@ package poxmania.controller;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,16 +34,13 @@ public class UsuarioController {
                 ,@RequestParam(value = "nick") String nick
                 ,@RequestParam(value = "password") String password
                 ,HttpSession session) {
-            
             String vista="registro";
             Usuario usuario = daousu.findByNick(nick);
-           
             if (usuario==null){
                 daousu.save(new Usuario(nick,password,first_name+" "+last_name,direccion,telefono));
                 session.setAttribute("user", nick);
                 vista="index";
             }
-
             return vista;
 	}
         
@@ -53,14 +48,10 @@ public class UsuarioController {
 	public String registrarUsuario(@RequestParam(value = "nick") String nick
                 ,@RequestParam(value = "password") String password
                 ,HttpSession session) {
-            
              Usuario usuario = daousu.findByNick(nick);
-            if (usuario==null){
-                
-            }
-            else if (usuario.getPass().compareTo(password)==0){
-                    session.setAttribute("user", nick);
-                    session.setAttribute("userid", usuario.getIdusuario());
+            if ((usuario!=null) && (usuario.getPass().compareTo(password)==0)){ 
+                session.setAttribute("user", nick);
+                session.setAttribute("userid", usuario.getIdusuario());
             }
             return "index";
 	}

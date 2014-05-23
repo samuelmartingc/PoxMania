@@ -1,7 +1,6 @@
 package poxmania.controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,54 +26,39 @@ public class IndexController {
 
         @RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(ModelMap model,HttpSession session) {
-        
-             
         List <Producto> listaProductos = null;
-
         if (session.isNew()){ //si la sesión es nueva, creamos una variable carro a null y la guardamos en la sesión
              Carro carro = new Carro();
              session.setAttribute("carro",carro);
-             listaProductos = dao.findAll();
-             session.setAttribute("listaproductos", listaProductos);
              session.setAttribute("user","");
              }    
-        
-       
+        listaProductos = dao.findAll();
+        session.setAttribute("listaproductos", listaProductos);
         listaProductos=(List <Producto>)session.getAttribute("listaproductos");
         List <Categoria> listaCategorias = null;
         listaCategorias = daoCat.findAll();
-        
         model.addAttribute("listaCategorias", listaCategorias);
         model.addAttribute("listaproductos", listaProductos);
 	return "index";
-
 	}
         
-        
-        
-        
+
         @RequestMapping(value="/indexEspecifico", method = RequestMethod.GET)
 	public String indexEspecifico(@RequestParam (value = "cat", required = false, defaultValue= "1")String categ, ModelMap model) {
         List <Producto> listaProductos = null;
         listaProductos = dao.findAll();
-        
         List <Categoria> listaCategorias = null;
         listaCategorias = daoCat.findAll();
         List <Producto> listAuxProd = new ArrayList<Producto>();
         for (Producto prod: listaProductos){
             if (prod.getCategoria().getIdcategoria() == Integer.parseInt(categ)){
-                //listaProductos.remove(prod);
                 listAuxProd.add(prod);
             }
         }
-        
-        
         model.addAttribute("listaCategorias", listaCategorias);
         model.addAttribute("listaProductos", listAuxProd);
 	return "index";
-
 	}
-        
         
         
         @RequestMapping(value="/registro", method = RequestMethod.GET)
@@ -83,7 +67,7 @@ public class IndexController {
 	return "registro";
 	}
         
-    ////    //MODIFICADO y tn index.jsp el enlace que manda a este método
+        
         @RequestMapping(value="/detallesProducto", method = RequestMethod.GET)
 	public String detallesProducto(@RequestParam (value = "id") int id,ModelMap model) {
             Producto producto = dao.get(id);
@@ -97,19 +81,8 @@ public class IndexController {
         
         @RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logOut(HttpSession session) {
-            /*
-            List <Producto> listaProductos = null;
-            listaProductos=(List <Producto>)session.getAttribute("listaproductos");
-            List <Categoria> listaCategorias = null;
-            listaCategorias = daoCat.findAll();
-            */
             session.setAttribute("user", "");
             session.setAttribute("userid", "");
-            /*
-            model.addAttribute("listaCategorias", listaCategorias);
-            model.addAttribute("listaproductos", listaProductos);
-                    */
 	return "index";
 	}
-	
 }

@@ -17,7 +17,6 @@ import poxmania.model.Categoria;
 import poxmania.model.Producto;
 
 @Controller
-//@RequestMapping("/index")
 public class IndexController {
     
         @Autowired

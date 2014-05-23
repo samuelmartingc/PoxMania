@@ -45,14 +45,8 @@ public class CarroController {
     
     @Autowired
     RelacionproductopedidoDAO relDAO;
+ 
     
-    //Carro carro;
-    
-    
-    //ProductoCarro prodCarro;
-    
-    
-///    /MODIFICARLO cambiar la forma de introducir productos en el carro , pasandole al carro el Producto
     @RequestMapping(value="/meterEnCarro" , method = RequestMethod.GET)
     public String meterEnCarro(@RequestParam(value="id") int id, Model model, HttpSession session) {
          Carro carro = (Carro) session.getAttribute("carro");

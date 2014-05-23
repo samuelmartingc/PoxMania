@@ -24,56 +24,50 @@
 
         <c:import url="cabeceraProductos.jsp" charEncoding="utf-8"/>
         
-        <h1> Contenido del carro: ${user}</h1>
+        <h1> Contenido del carro <span class="glyphicon glyphicon-shopping-cart"></span></h1>
         
          
         <!-- formulario de modificación de pedido -->
          
-        <table>
+        
             <c:forEach var="producto" items="${carro.contenido}" >
-                <tr>
-                    <td>
-                        <img title="imagen" alt="imagen de ${producto.prod.nombreproducto}" src=".${producto.prod.imagen}"  height="50px">
-                        <a href=<c:url value="/detallesProducto?id=${producto.prod.idproducto}" /> >${producto.prod.nombreproducto}</a>  
-                        <div class="cantidad">
+                
+                        <img title="imagen" style="width: 10%" alt="imagen de ${producto.prod.nombreproducto}" src=".${producto.prod.imagen}">
+                        <br><a  href=<c:url value="/detallesProducto?id=${producto.prod.idproducto}" /> ><h3>${producto.prod.nombreproducto}</h3></a> 
+                        
+                        <div class="row" >
+                            
                             <form method="get" action=<c:url value="/decrementar" />>
                                 <input type="hidden" name="id" value="${producto.prod.idproducto}"></input>
-                                <input class="decrementar" type="submit" value="-" ></input>
+                                <input class="col-xs-1 col-md-1 btn btn-default btn-block btn-lg" style="max-width: 50px" type="submit" value="-" ></input>
                             </form>    
-                            <input type="text" name="${producto.prod.idproducto}" value="${producto.cantidad}" size="1" readonly></input>
+                            <input class="col-xs-1 col-md-1 input-lg" style="max-width: 100px" type="text" name="${producto.prod.idproducto}" value="${producto.cantidad}" size="1" readonly></input>
                              <form method="get" action=<c:url value="/incrementar" />>
                                 <input type="hidden" name="id" value="${producto.prod.idproducto}"></input>
-                                <input class="incrementar" type="submit" value="+" ></input>
+                                <input class="col-xs-1 col-md-1 btn btn-default btn-block btn-lg" style="max-width: 50px" type="submit" value="+" ></input>
                             </form>  
-                            <a href=<c:url value="/sacarDeCarro?id=${producto.prod.idproducto}" /> >Eliminar</a>  
-                            <p>Precio: ${producto.prod.precio} <span class="glyphicon glyphicon-euro"></span><p>
-                            </td>
-                    <td>
-                        Precio Total:   ${producto.prod.precio * producto.cantidad} <span class="glyphicon glyphicon-euro"></span>
+                        </div>
+                                <a  href=<c:url value="/sacarDeCarro?id=${producto.prod.idproducto}" /> ><h2><span class="glyphicon glyphicon-trash"> Eliminar</h2></a>
+                              
+                            <p>Precio por cada unidad: ${producto.prod.precio} <span class="glyphicon glyphicon-euro"></span><p>
+                            
+                    
+                        Subtotal:   ${producto.prod.precio * producto.cantidad} <span class="glyphicon glyphicon-euro"></span>
 
-                    </td>
+                            <br><h1>_______________________</h1><br>
                 
-                 </tr>
+                 
                  
             </c:forEach>
-                 </table>  
+                
         
-            <div class="pedido">
-                <a href=<c:url value="/hacerPedido" /> class="btn btn-primary" role="button">Hacer pedido</a>
-                <p>Importe Total: ${carro.precio} <span class="glyphicon glyphicon-euro"></span></p>
-            </div>
+                <div class="row">
+                    <div class="col-xs-6 col-md-6"><a href=<c:url value="/hacerPedido" /> class="btn btn-primary btn-block btn-lg" tabindex="1">Terminar Compra</a></div>
+                    <div class="col-xs-6 col-md-6"><a href=<c:url value="/index" /> class="btn btn-success btn-block btn-lg" tabindex="2" >Volver</a></div>
+                </div>
+
                   
             
-        <br><br>   
-        <!-- formulario de realizar pedido -->   
-        <form method="get" action="FinalizarPedido" name="agregarEnCarro"> 
-            Nombre de pedido <input type="text" name="nombrePedido" required>
-            <input type="submit" name="finalizarPedido" value="Finalizar pedido">
-        </form>
-        <br><br>
-        
-        <a href=<c:url value="/index" />>Volver</a>
        
-        
     </body>
 </html>

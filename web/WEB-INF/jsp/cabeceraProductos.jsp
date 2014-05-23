@@ -19,7 +19,8 @@
                     <li><a href=<c:url value="/indexEspecifico?cat=${categoria.idcategoria}" /> > ${categoria.nombrecategoria}</a></li>
                     </c:forEach>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            
+            <ul class="nav navbar-nav navbar-right">    
                 <c:if test="${user == ''}">
                     <li ><a id="loginLi" href="#">Login</a></li>
                     <li><a href=<c:url value="/registro" />>Registrarse</a></li>
@@ -29,6 +30,7 @@
                     <li ><a id="user" href=<c:url value="/logout" /> >Logout</a></li>
                     </c:if>
             </ul>
+                        
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a class="navbar-brand" href=<c:url value="/verCarro" /> ><span class="glyphicon glyphicon-shopping-cart"></span>Ver Carro</a>
@@ -37,7 +39,25 @@
         </div>
     </div>
 </div>
-</div>
+                
+      <div class="panel-heading">          
+<ul>
+    <div class="row">          
+    
+                <form method="get" action=<c:url value="/buscarProducto" />>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <input placeholder="Buscar" class="form-control input-lg" type="text" name="nombre" required>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <input class="btn btn-success btn-block btn-lg" type="submit" name="enviar" value="Buscar" placeholder="PS4">
+                    </div>
+                    
+                     
+                </form>
+                    </div> 
+            </ul>
+      </div>
+                    </div> 
 <div class="container" id="logi">
     <form class="form-signin" role="form" action=<c:url value="/loginUsuario" />>
         <h2 class="form-signin-heading">Por favor, loguéate</h2>

@@ -8,6 +8,7 @@ package poxmania.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import org.apache.commons.io.FileUtils;
@@ -40,6 +41,19 @@ public class ProductoController {
     
     @Autowired
     ProductoDAO daoProd;
+    
+    @RequestMapping(value="/buscarProducto", method = RequestMethod.GET)
+	public String buscarProducto(@RequestParam (value = "nombre")String nombre, ModelMap model) {
+        List <Producto> listaProductos = null;
+        listaProductos = daoProd.findByNombreproducto(nombre);
+        List <Categoria> listaCategorias = null;
+        listaCategorias = daoCat.findAll();
+        model.addAttribute("listaCategorias", listaCategorias);
+        model.addAttribute("listaproductos", listaProductos);
+	return "index";
+	}
+    
+    
     
     @RequestMapping(value="/altaProducto", method = RequestMethod.GET)
 	public String altaProducto(ModelMap model) {

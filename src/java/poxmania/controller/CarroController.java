@@ -6,6 +6,7 @@
 
 package poxmania.controller;
 
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import poxmania.dao.CategoriaDAO;
 import poxmania.dao.PedidoDAO;
 import poxmania.dao.ProductoDAO;
 import poxmania.dao.RelacionproductopedidoDAO;
 import poxmania.dao.UsuarioDAO;
 import poxmania.model.Carro;
+import poxmania.model.Categoria;
 import poxmania.model.Pedido;
 import poxmania.model.Producto;
 import poxmania.model.ProductoCarro;
@@ -44,6 +47,9 @@ public class CarroController {
     
     @Autowired
     RelacionproductopedidoDAO relDAO;
+    
+    @Autowired
+    CategoriaDAO catDAO;
  
     
     @RequestMapping(value="/meterEnCarro" , method = RequestMethod.GET)
@@ -54,7 +60,7 @@ public class CarroController {
          carro.meterEnCarro(prodcarro);
          session.setAttribute("carro",carro);
          model.addAttribute("listaProductos", session.getAttribute("listaproductos"));
-         return "index";
+         return "redirect:index";
     }
     
     @RequestMapping(value="/sacarDeCarro" , method = RequestMethod.GET)
@@ -70,7 +76,7 @@ public class CarroController {
          Carro carro = (Carro) session.getAttribute("carro");
          carro.incrementarUnidades(id, 1);
          session.setAttribute("carro",carro);
-         return "verCarro";
+         return "redirect:verCarro";
     }
     
     @RequestMapping(value="/decrementar" , method = RequestMethod.GET)
@@ -78,11 +84,14 @@ public class CarroController {
          Carro carro = (Carro) session.getAttribute("carro");
          carro.decrementarUnidades(id, 1);
          session.setAttribute("carro",carro);
-         return "verCarro";
+         return "redirect:verCarro";
     }
     
     @RequestMapping(value="/verCarro" , method = RequestMethod.GET)
     public String verCarro(Model model, HttpSession session) {
+        List <Categoria> listaCategorias = null;
+        listaCategorias = catDAO.findAll();
+        model.addAttribute("listaCategorias", listaCategorias);
         model.addAttribute("carro", session.getAttribute("carro"));
         return "verCarro";
     }

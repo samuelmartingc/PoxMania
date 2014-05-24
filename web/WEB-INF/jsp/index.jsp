@@ -26,7 +26,7 @@
                                 <h3 style="text-align: center">${producto.nombreproducto} ${producto.precio} <span class="glyphicon glyphicon-euro"></span></h3>
                                     <c:if test="${producto.stock < 5}">
                                         <c:if test="${producto.stock > 0}">
-                                        <h2 style="color:red">¡¡ Corre que quedan ${producto.stock} !!</h2>
+                                        <h2 style="color:red">¡¡ Date prisa que quedan ${producto.stock} !!</h2>
                                     </c:if>
                                 </c:if>
                                 <c:if test="${producto.stock >= 5}"><h2 style="color: white"> .</h2></c:if>

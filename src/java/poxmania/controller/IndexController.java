@@ -24,11 +24,7 @@ public class IndexController {
         @Autowired
         CategoriaDAO daoCat;
 
-        @RequestMapping(value="*", method = RequestMethod.GET)
-	public String indexDefault() {
-	return "redirect:index";
-	}
- 
+        
         @RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(ModelMap model,HttpSession session) {
         List <Producto> listaProductos = null;

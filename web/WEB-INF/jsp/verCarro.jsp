@@ -42,5 +42,6 @@
             <div class="col-xs-6 col-md-6"><a href=<c:url value="/hacerPedido" /> class="btn btn-primary btn-block btn-lg" tabindex="1">Terminar Compra</a></div>
             <div class="col-xs-6 col-md-6"><a href=<c:url value="/index" /> class="btn btn-success btn-block btn-lg" tabindex="2" >Volver</a></div>
         </div>
+        <c:import url="footer.jsp" charEncoding="utf-8"/>
     </body>
 </html>

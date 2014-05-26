@@ -39,8 +39,9 @@
                     <c:if test="${prod.stock <= 0}">
                         <a href="<c:url value="/meterEnCarro?id=${prod.idproducto}" />" class="btn btn-primary" role="button" disabled>Comprar</a>
                     </c:if>
-                        <a href="<c:url value="/index"/>" class="btn btn-default" role="button">Volver al inicio</a></p>
+                    <a href="<c:url value="/index"/>" class="btn btn-default" role="button">Volver al inicio</a></p>
             </div>
         </div>
+        <c:import url="footer.jsp" charEncoding="utf-8"/>
     </body>
 </html>
